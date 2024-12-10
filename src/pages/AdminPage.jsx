@@ -15,6 +15,7 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardContent from "../components/DashboardContent";
 import OrdersContent from "../components/OrdersContent";
+import ProductsContent from "../components/ProductsContent";
 
 const drawerWidth = 240;
 
@@ -52,9 +53,7 @@ const AdminPage = () => {
   };
 
   const getTextStyles = (view) => {
-    return selectedView === view
-      ? { color: "#fff" }
-      : { color: "#000" };
+    return selectedView === view ? { color: "#fff" } : { color: "#000" };
   };
 
   return (
@@ -91,7 +90,9 @@ const AdminPage = () => {
                 mb: 1, // Espacement entre les boutons
               }}
             >
-              <ListItemIcon sx={{ ...getIconStyles("dashboard"), minWidth: "unset", mr: 1 }}>
+              <ListItemIcon
+                sx={{ ...getIconStyles("dashboard"), minWidth: "unset", mr: 1 }}
+              >
                 <AssessmentIcon />
               </ListItemIcon>
               <ListItemText
@@ -112,7 +113,9 @@ const AdminPage = () => {
                 mb: 1,
               }}
             >
-              <ListItemIcon sx={{ ...getIconStyles("products"), minWidth: "unset", mr: 1 }}>
+              <ListItemIcon
+                sx={{ ...getIconStyles("products"), minWidth: "unset", mr: 1 }}
+              >
                 <Inventory2Icon />
               </ListItemIcon>
               <ListItemText
@@ -132,7 +135,9 @@ const AdminPage = () => {
                 py: 1,
               }}
             >
-              <ListItemIcon sx={{ ...getIconStyles("orders"), minWidth: "unset", mr: 1 }}>
+              <ListItemIcon
+                sx={{ ...getIconStyles("orders"), minWidth: "unset", mr: 1 }}
+              >
                 <ListAltIcon />
               </ListItemIcon>
               <ListItemText
@@ -147,6 +152,7 @@ const AdminPage = () => {
       <Box component="main" sx={{ flexGrow: 1, backgroundColor: "#fff" }}>
         <Container maxWidth="xl" sx={{ mt: 4 }}>
           {selectedView === "dashboard" && <DashboardContent />}
+          {selectedView === "products" && <ProductsContent />}
           {selectedView === "orders" && <OrdersContent />}
         </Container>
       </Box>
