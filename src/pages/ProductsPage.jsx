@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import useProducts from '../hooks/useProducts';
 import {
   Box,
@@ -16,7 +16,10 @@ import {
 
 const ProductsPage = () => {
   const { category } = useParams(); // Récupère le paramètre dans l'URL (ex: "pods", "kits", "puff")
-  const allProducts = useProducts(); // Tous les produits
+  const { t } = useTranslation();
+  const {products } = useProducts(); // Tous les produits
+  console.log(products);
+  
 
   // Filtre des produits par catégorie
   const filteredProducts = allProducts.filter(p => 
@@ -27,7 +30,7 @@ const ProductsPage = () => {
     <Box sx={{ backgroundColor: "#fff", minHeight: "100vh", py: 4 }}>
       <Container>
         <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}>
-          {category.charAt(0).toUpperCase() + category.slice(1)}
+          {t(`productsPage.categories.${category.toLowerCase()}`, category)}
         </Typography>
         <Grid container spacing={3} justifyContent="center">
           {filteredProducts.map(product => (
@@ -58,7 +61,7 @@ const ProductsPage = () => {
                     {product.price}
                   </Typography>
                   <Typography variant="body2" color="text.primary">
-                    {product.category ? product.category : "Body text."}
+                    {t('productsPage.categoryLabel')}: {product.category || t('productsPage.unknownCategory')}
                   </Typography>
                 </CardContent>
                 <CardActions
@@ -66,7 +69,7 @@ const ProductsPage = () => {
                 >
                   <TextField
                     select
-                    label="Qty"
+                    label={t('productsPage.quantity')}
                     size="small"
                     SelectProps={{ native: true }}
                     sx={{ width: 80 }}
@@ -80,7 +83,7 @@ const ProductsPage = () => {
                     color="primary"
                     sx={{ textTransform: "none" }}
                   >
-                    Add to cart
+                    {t('productsPage.addToCart')}
                   </Button>
                 </CardActions>
               </Card>
@@ -88,10 +91,11 @@ const ProductsPage = () => {
           ))}
         </Grid>
 
-        {/* Pagination (exemple) */}
+        {/* Pagination */}
         <Box textAlign="center" mt={4}>
-          {/* Ajoutez ici un composant de pagination si nécessaire */}
-          <Typography variant="body2">Page 1 de ...</Typography>
+          <Typography variant="body2">
+            {t('productsPage.pagination', { current: 1, total: 10 })}
+          </Typography>
         </Box>
       </Container>
     </Box>

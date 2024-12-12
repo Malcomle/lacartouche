@@ -16,11 +16,13 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardContent from "../components/DashboardContent";
 import OrdersContent from "../components/OrdersContent";
 import ProductsContent from "../components/ProductsContent";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
 const AdminPage = () => {
   const [selectedView, setSelectedView] = useState("dashboard");
+  const { t } = useTranslation();
 
   const getButtonStyles = (view) => {
     return selectedView === view
@@ -28,7 +30,7 @@ const AdminPage = () => {
           backgroundColor: "primary.main",
           color: "#fff",
           "&:hover": {
-            backgroundColor: "primary.main", // Maintenir la couleur au survol
+            backgroundColor: "primary.main",
             color: "#fff",
           },
         }
@@ -36,7 +38,7 @@ const AdminPage = () => {
           backgroundColor: "transparent",
           color: "#000",
           "&:hover": {
-            backgroundColor: "grey.300", // Optionnel: Couleur au survol pour les non-sélectionnés
+            backgroundColor: "grey.300",
             color: "#000",
           },
         };
@@ -66,7 +68,7 @@ const AdminPage = () => {
           [`& .MuiDrawer-paper`]: {
             width: drawerWidth,
             boxSizing: "border-box",
-            backgroundColor: "grey.main", // Utiliser une couleur existante dans le thème
+            backgroundColor: "grey.main",
             color: "#fff",
             position: "fixed",
             height: "100vh",
@@ -78,7 +80,7 @@ const AdminPage = () => {
         <Toolbar /> {/* Espace sous l'AppBar */}
         <Box sx={{ overflow: "auto", padding: 2 }}>
           <List>
-            {/* 'CUADRO DE MANDOS' */}
+            {/* Dashboard */}
             <ListItemButton
               onClick={() => setSelectedView("dashboard")}
               sx={{
@@ -87,7 +89,7 @@ const AdminPage = () => {
                 width: "auto",
                 px: 2,
                 py: 1,
-                mb: 1, // Espacement entre les boutons
+                mb: 1,
               }}
             >
               <ListItemIcon
@@ -96,12 +98,12 @@ const AdminPage = () => {
                 <AssessmentIcon />
               </ListItemIcon>
               <ListItemText
-                primary="CUADRO DE MANDOS"
+                primary={t("adminPage.dashboard")}
                 sx={{ ...getTextStyles("dashboard") }}
               />
             </ListItemButton>
 
-            {/* 'TODOS LOS PRODUCTOS' */}
+            {/* Products */}
             <ListItemButton
               onClick={() => setSelectedView("products")}
               sx={{
@@ -119,12 +121,12 @@ const AdminPage = () => {
                 <Inventory2Icon />
               </ListItemIcon>
               <ListItemText
-                primary="TODOS LOS PRODUCTOS"
+                primary={t("adminPage.products")}
                 sx={{ ...getTextStyles("products") }}
               />
             </ListItemButton>
 
-            {/* 'LISTA DE PEDIDOS' */}
+            {/* Orders */}
             <ListItemButton
               onClick={() => setSelectedView("orders")}
               sx={{
@@ -141,7 +143,7 @@ const AdminPage = () => {
                 <ListAltIcon />
               </ListItemIcon>
               <ListItemText
-                primary="LISTA DE PEDIDOS"
+                primary={t("adminPage.orders")}
                 sx={{ ...getTextStyles("orders") }}
               />
             </ListItemButton>
