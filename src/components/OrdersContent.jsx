@@ -1,4 +1,3 @@
-// src/pages/OrdersContent.jsx
 import React from "react";
 import {
   Box,
@@ -11,23 +10,24 @@ import {
   TableBody,
   Checkbox,
   IconButton,
-  Button,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useTranslation } from "react-i18next";
 import useOrders from "../hooks/useOrders";
 
 const OrdersContent = () => {
   const orders = useOrders();
+  const { t } = useTranslation();
 
   return (
     <Box sx={{ flexGrow: 1, p: 3, backgroundColor: "#fff" }}>
       <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
-        Lista de pedidos
+        {t("ordersPage.title")}
       </Typography>
 
       <Paper sx={{ p: 3, borderRadius: "10px", backgroundColor: "#f9f9f9" }}>
         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-          Compras recientes
+          {t("ordersPage.recentPurchases")}
         </Typography>
         <Table>
           <TableHead>
@@ -35,14 +35,24 @@ const OrdersContent = () => {
               <TableCell padding="checkbox">
                 <Checkbox />
               </TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Producto</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Número ID</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Fecha</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>
-                Nombre del cliente
+                {t("ordersPage.product")}
               </TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Estado</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Importe</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>
+                {t("ordersPage.orderId")}
+              </TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>
+                {t("ordersPage.date")}
+              </TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>
+                {t("ordersPage.customerName")}
+              </TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>
+                {t("ordersPage.status")}
+              </TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>
+                {t("ordersPage.amount")}
+              </TableCell>
               <TableCell padding="checkbox"></TableCell>
             </TableRow>
           </TableHead>
@@ -64,11 +74,15 @@ const OrdersContent = () => {
                         height: 8,
                         borderRadius: "50%",
                         backgroundColor:
-                          order.status === "Delivered" ? "blue" : "orange",
+                          order.status === "delivered"
+                            ? "blue"
+                            : order.status === "pending"
+                            ? "orange"
+                            : "red",
                         mr: 1,
                       }}
                     />
-                    {order.status}
+                    {t(`ordersPage.statusOptions.${order.status.toLowerCase()}`)}
                   </Box>
                 </TableCell>
                 <TableCell>{order.amount}</TableCell>
