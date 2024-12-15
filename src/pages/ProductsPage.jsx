@@ -13,16 +13,20 @@ import {
   TextField,
   Button
 } from '@mui/material';
+import { useEffect, useRef } from 'react';
 
 const ProductsPage = () => {
   const { category } = useParams(); // Récupère le paramètre dans l'URL (ex: "pods", "kits", "puff")
   const { t } = useTranslation();
-  const {products } = useProducts(); // Tous les produits
+  const {products} = useProducts(); // Tous les produits
   console.log(products);
+
+
+
   
 
   // Filtre des produits par catégorie
-  const filteredProducts = allProducts.filter(p => 
+  const filteredProducts = products.filter(p => 
     p.category && p.category.toLowerCase() === category.toLowerCase()
   );
 

@@ -30,7 +30,7 @@ const brandLogos = [
 ];
 
 const HomePage = () => {
-  const products = useProducts(); // Récupère tous les produits
+  const {products} = useProducts(); // Récupère tous les produits
   const { t } = useTranslation();
 
   return (
