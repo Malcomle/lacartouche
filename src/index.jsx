@@ -4,6 +4,7 @@ import App from './App'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css'
+import './i18n';
 
 const theme = createTheme({
   palette: {

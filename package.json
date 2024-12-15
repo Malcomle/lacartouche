@@ -14,8 +14,12 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.1.10",
     "@mui/material": "^6.1.10",
+    "firebase": "^11.1.0",
+    "i18next": "^24.1.0",
+    "i18next-http-backend": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^15.1.4",
     "react-router-dom": "^7.0.2",
     "recharts": "^2.14.1"
   },
