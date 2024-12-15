@@ -10,54 +10,55 @@ import {
   Modal,
 } from "@mui/material";
 
-const consejos = [
+const blogPosts = [
   {
     id: 1,
-    title: "Guía para Principiantes: Cómo Elegir tu Primer Cigarrillo Electrónico",
+    title: "¿Es Seguro Vapear? Desmintiendo Mitos y Comprendiendo los Riesgos",
     description:
-      "En este artículo, explicamos los diferentes tipos de cigarrillos electrónicos, sus características, y cómo elegir el modelo adecuado según tus necesidades...",
+      "Este artículo aborda los mitos más comunes sobre el vapeo y ofrece información basada en estudios...",
     fullText:
-      "Aquí encontrarás una guía detallada sobre los mejores kits para principiantes, incluyendo pros y contras de cada uno, recomendaciones de marcas y consejos para comenzar tu experiencia de vapeo.",
-      image: "images/consejo1.png",
+      "El vapeo ha sido objeto de debates y malentendidos. En este artículo, exploramos estudios recientes sobre los riesgos y beneficios del vapeo comparado con los cigarrillos tradicionales. Analizamos los mitos más comunes y te ofrecemos información objetiva para tomar decisiones informadas.",
+      image: "images/blog1.png",
   },
   {
     id: 2,
-    title: "Cómo Mantener y Limpiar tu Cigarrillo Electrónico Correctamente",
+    title: "Los Mejores Sabores de E-líquidos para Probar este Año",
     description:
-      "Este artículo ofrece una guía paso a paso para el mantenimiento y la limpieza de tu dispositivo, garantizando su durabilidad y un rendimiento óptimo.",
+      "Una reseña de los sabores de e-líquidos más populares y en tendencia, ideal para quienes quieren descubrir nuevos sabores...",
     fullText:
-      "El mantenimiento adecuado incluye la limpieza regular de las boquillas, el cambio de resistencias y la revisión de las baterías para evitar problemas a largo plazo. Aquí te enseñamos cómo hacerlo de forma sencilla y práctica.",
-      image: "images/consejo2.png",
+      "Este año, los sabores frutales y postres lideran las tendencias de e-líquidos. Analizamos las mejores marcas y sabores como sandía, mango, fresa, y combinaciones innovadoras como pastel de limón y vainilla. Descubre cuáles son los más recomendados por los expertos y los usuarios.",
+      image: "images/blog2.png",
   },
 ];
 
-const ConsejosPage = () => {
+const BlogPage = () => {
   const [open, setOpen] = useState(false); // Contrôle la modale
-  const [selectedConsejo, setSelectedConsejo] = useState(null); // Contient l'article sélectionné
+  const [selectedPost, setSelectedPost] = useState(null); // Article sélectionné
 
-  const handleOpen = (consejo) => {
-    setSelectedConsejo(consejo);
+  const handleOpen = (post) => {
+    setSelectedPost(post);
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-    setSelectedConsejo(null);
+    setSelectedPost(null);
   };
 
   return (
     <Box sx={{ padding: 4 }}>
-      {/* En-tête */}
+      {/* En-tête de la page */}
       <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-        Consejos
+        Blog
       </Typography>
       <Typography variant="subtitle1" sx={{ marginBottom: 4 }}>
-        Encuentra los mejores consejos y guías para mejorar tu experiencia de vapeo y cuidar tus cigarrillos electrónicos.
+        Descubre las últimas tendencias y consejos sobre cigarrillos electrónicos para mejorar tu experiencia de vapeo.
       </Typography>
 
+      {/* Liste des articles */}
       <Grid container spacing={6}>
-        {consejos.map((consejo) => (
-          <Grid item xs={12} md={6} key={consejo.id}>
+        {blogPosts.map((post) => (
+          <Grid item xs={12} md={6} key={post.id}>
             <Card
               sx={{
                 height: "100%",
@@ -69,26 +70,28 @@ const ConsejosPage = () => {
             >
               <CardMedia
                 component="img"
-                alt={consejo.title}
+                alt={post.title}
                 height="200"
-                image={consejo.image}
+                image={post.image}
                 sx={{ objectFit: "cover", width: "100%" }}
               />
               <CardContent>
                 <Typography variant="h6" sx={{ fontWeight: "bold", color: "#000" }} gutterBottom>
-                  {consejo.title}
+                  {post.title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#000" }} gutterBottom>
-                  {consejo.description}
+                  {post.description}
                 </Typography>
                 <Button
                   variant="contained"
                   sx={{
                     marginTop: 2,
                     backgroundColor: "#5c3a21",
-                    ":hover": { backgroundColor: "#8b5e34" },
+                    ":hover": {
+                      backgroundColor: "#8b5e34",
+                    },
                   }}
-                  onClick={() => handleOpen(consejo)}
+                  onClick={() => handleOpen(post)}
                 >
                   Leer más
                 </Button>
@@ -117,21 +120,21 @@ const ConsejosPage = () => {
             overflowY: "auto",
           }}
         >
-          {selectedConsejo && (
+          {selectedPost && (
             <>
               <Typography
                 id="modal-title"
                 variant="h5"
                 sx={{ fontWeight: "bold", marginBottom: 2 }}
               >
-                {selectedConsejo.title}
+                {selectedPost.title}
               </Typography>
               <Typography
                 id="modal-description"
                 variant="body1"
                 sx={{ color: "#000", marginBottom: 2 }}
               >
-                {selectedConsejo.fullText}
+                {selectedPost.fullText}
               </Typography>
               <Button
                 variant="contained"
@@ -151,4 +154,4 @@ const ConsejosPage = () => {
   );
 };
 
-export default ConsejosPage;
+export default BlogPage;
