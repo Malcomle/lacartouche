@@ -14,6 +14,7 @@ import {
   MenuItem,
   Container,
   Grid,
+  Badge,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -175,6 +176,11 @@ const App = () => {
             >
               <LanguageIcon />
             </IconButton>
+                      <IconButton color="inherit" sx={{ ml: 2 }} component={Link} to="/shoppingcart">
+            <Badge badgeContent={cart.reduce((acc, item) => acc + item.quantity, 0)} color="secondary">
+              <ShoppingCartIcon />
+            </Badge>
+          </IconButton>
             <Menu
               id="language-menu"
               anchorEl={languageMenuAnchor}
@@ -197,8 +203,7 @@ const App = () => {
         </AppBar>
       )}
 
-      {/* Contenu principal */}
-      <AppRoutes />
+
 
       {/* Afficher le footer uniquement si la page n'est pas dans noLayoutPaths */}
       {!hideLayout && (
