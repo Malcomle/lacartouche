@@ -1,7 +1,9 @@
-// Import the functions you need from the SDKs you need
+// firebaseConfig.js
+
+// Import des fonctions dont vous avez besoin
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
-
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyActD4nIliMutVLMQIhIaXgWKE-93jIo50",
@@ -13,7 +15,11 @@ const firebaseConfig = {
   measurementId: "G-HLLSJJQGPQ"
 };
 
-// Initialize Firebase
+// Initialisation de l'app Firebase
 const app = initializeApp(firebaseConfig);
 
+// Initialisation de Firestore
 export const db = getFirestore(app);
+
+// Initialisation de l'authentification
+export const auth = getAuth(app);

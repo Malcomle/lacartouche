@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Typography, Box, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const InitialPage = () => {
   const navigate = useNavigate();
 
-  const handleYes = () => {
-    navigate('/home'); // Redirige vers la page principale
-  };
+  useEffect(() => {
+    // Vérifie si l'utilisateur a déjà confirmé qu'il a plus de 18 ans
+    const isAdultConfirmed = localStorage.getItem('isAdultConfirmed');
+    if (isAdultConfirmed === 'true') {
+      // Si oui, redirige directement vers /home
+      navigate('/home');
+    }
+  }, [navigate]);
 
+  const handleYes = () => {
+    localStorage.setItem('isAdultConfirmed', 'true');
+    navigate('/home');
+  };
+  
   const handleNo = () => {
-    navigate('/restricted'); // Redirige vers la page restreinte
+    localStorage.setItem('isAdultConfirmed', 'false');
+    navigate('/restricted');
   };
 
   return (

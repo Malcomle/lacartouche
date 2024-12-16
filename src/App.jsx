@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import AppRoutes from "./AppRoutes";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -22,6 +22,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useTranslation } from "react-i18next";
+import { DesktopMacRounded } from "@mui/icons-material";
+import { useAuth } from "./contexts/AuthContext";
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -30,6 +32,9 @@ const App = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation(); // Obtenez l'URL actuelle
   const [cart, setCart] = useState([]);
+
+  const { signIn, currentUser, logOut } = useAuth();
+
 
   // Liste des chemins où la navbar et le footer ne doivent pas apparaître
   const noLayoutPaths = ["/login", "/", "/restricted"];
@@ -208,6 +213,15 @@ const App = () => {
               <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
               <MenuItem onClick={() => changeLanguage("es")}>Español</MenuItem>
             </Menu>
+
+            { currentUser ? (
+            <IconButton color="inherit" component={Link} to="/admin/dashboard">
+              <DesktopMacRounded/>
+            </IconButton>
+            ) : (
+              // nothing
+              <></>
+            )}
           </Toolbar>
         </AppBar>
       )}

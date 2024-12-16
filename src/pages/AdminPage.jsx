@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Toolbar,
@@ -9,23 +9,30 @@ import {
   ListItemText,
   Container,
 } from "@mui/material";
-
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import ListAltIcon from "@mui/icons-material/ListAlt";
-import DashboardContent from "../components/DashboardContent";
-import OrdersContent from "../components/OrdersContent";
-import ProductsContent from "../components/ProductsContent";
 import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
+import { styled } from "@mui/system";
+import { Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
-const AdminPage = () => {
-  const [selectedView, setSelectedView] = useState("dashboard");
-  const { t } = useTranslation();
+const StyledLink = styled(Link)({
+  textDecoration: "none",
+  color: "inherit",
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+});
 
-  const getButtonStyles = (view) => {
-    return selectedView === view
+const AdminPage = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+
+  const getButtonStyles = (path) => {
+    return location.pathname === path
       ? {
           backgroundColor: "primary.main",
           color: "#fff",
@@ -44,18 +51,14 @@ const AdminPage = () => {
         };
   };
 
-  const getIconStyles = (view) => {
-    return selectedView === view
-      ? {
-          color: "#fff",
-        }
-      : {
-          color: "#000",
-        };
+  const getIconStyles = (path) => {
+    return location.pathname === path
+      ? { color: "#fff" }
+      : { color: "#000" };
   };
 
-  const getTextStyles = (view) => {
-    return selectedView === view ? { color: "#fff" } : { color: "#000" };
+  const getTextStyles = (path) => {
+    return location.pathname === path ? { color: "#fff" } : { color: "#000" };
   };
 
   return (
@@ -80,71 +83,62 @@ const AdminPage = () => {
         <Toolbar /> {/* Espace sous l'AppBar */}
         <Box sx={{ overflow: "auto", padding: 2 }}>
           <List>
-            {/* Dashboard */}
             <ListItemButton
-              onClick={() => setSelectedView("dashboard")}
+              component={StyledLink}
+              to="/admin/dashboard"
               sx={{
-                ...getButtonStyles("dashboard"),
+                ...getButtonStyles("/admin/dashboard"),
                 borderRadius: "10px",
-                width: "auto",
                 px: 2,
                 py: 1,
                 mb: 1,
               }}
             >
-              <ListItemIcon
-                sx={{ ...getIconStyles("dashboard"), minWidth: "unset", mr: 1 }}
-              >
+              <ListItemIcon sx={{ ...getIconStyles("/admin/dashboard"), minWidth: "unset", mr: 1 }}>
                 <AssessmentIcon />
               </ListItemIcon>
               <ListItemText
                 primary={t("adminPage.dashboard")}
-                sx={{ ...getTextStyles("dashboard") }}
+                sx={{ ...getTextStyles("/admin/dashboard") }}
               />
             </ListItemButton>
 
-            {/* Products */}
             <ListItemButton
-              onClick={() => setSelectedView("products")}
+              component={StyledLink}
+              to="/admin/products"
               sx={{
-                ...getButtonStyles("products"),
+                ...getButtonStyles("/admin/products"),
                 borderRadius: "10px",
-                width: "auto",
                 px: 2,
                 py: 1,
                 mb: 1,
               }}
             >
-              <ListItemIcon
-                sx={{ ...getIconStyles("products"), minWidth: "unset", mr: 1 }}
-              >
+              <ListItemIcon sx={{ ...getIconStyles("/admin/products"), minWidth: "unset", mr: 1 }}>
                 <Inventory2Icon />
               </ListItemIcon>
               <ListItemText
                 primary={t("adminPage.products")}
-                sx={{ ...getTextStyles("products") }}
+                sx={{ ...getTextStyles("/admin/products") }}
               />
             </ListItemButton>
 
-            {/* Orders */}
             <ListItemButton
-              onClick={() => setSelectedView("orders")}
+              component={StyledLink}
+              to="/admin/orders"
               sx={{
-                ...getButtonStyles("orders"),
+                ...getButtonStyles("/admin/orders"),
                 borderRadius: "10px",
-                width: "auto",
                 px: 2,
                 py: 1,
               }}
             >
-              <ListItemIcon
-                sx={{ ...getIconStyles("orders"), minWidth: "unset", mr: 1 }}
-              >
+              <ListItemIcon sx={{ ...getIconStyles("/admin/orders"), minWidth: "unset", mr: 1 }}>
                 <ListAltIcon />
               </ListItemIcon>
               <ListItemText
                 primary={t("adminPage.orders")}
-                sx={{ ...getTextStyles("orders") }}
+                sx={{ ...getTextStyles("/admin/orders") }}
               />
             </ListItemButton>
           </List>
@@ -153,9 +147,8 @@ const AdminPage = () => {
 
       <Box component="main" sx={{ flexGrow: 1, backgroundColor: "#fff" }}>
         <Container maxWidth="xl" sx={{ mt: 4 }}>
-          {selectedView === "dashboard" && <DashboardContent />}
-          {selectedView === "products" && <ProductsContent />}
-          {selectedView === "orders" && <OrdersContent />}
+          {/* Ici, le contenu dépendra de la route enfant */}
+          <Outlet />
         </Container>
       </Box>
     </Box>
