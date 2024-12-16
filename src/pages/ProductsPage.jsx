@@ -21,10 +21,6 @@ const ProductsPage = ({ cart, setCart }) => {
   const {products} = useProducts(); // Tous les produits
   console.log(products);
 
-
-
-  
-
   // Filtre des produits par catégorie
   const filteredProducts = products.filter(p => 
     p.category && p.category.toLowerCase() === category.toLowerCase()

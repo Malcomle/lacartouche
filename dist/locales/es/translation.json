@@ -1,0 +1,86 @@
+{
+    "title": "La Cartouche",
+    "welcome": "Bienvenido",
+    "products": "Productos",
+    "pods": "Pods",
+    "puff": "Puff",
+    "kits": "Kits",
+    "blog": "Blog",
+    "tips": "Consejos",
+    "customerSupport": "Atención al cliente",
+    "searchPlaceholder": "Buscar productos...",
+    "footerTitle": "La Cartouche",
+    "footerDescription": "Descubre nuestros cigarrillos electrónicos y accesorios para una transición fácil al vapeo.",
+    "otherPages": "Otras Páginas",
+    "homepage": {
+        "title": "La Cartouche Angers",
+        "subtitle": "Descubre nuestros cigarrillos electrónicos y accesorios para una transición fácil al vapeo.",
+        "buyNow": "Comprar",
+        "heroAlt": "Tienda La Cartouche",
+        "bestSellers": "Más Vendido",
+        "defaultCategory": "Categoría no especificada",
+        "quantity": "Cantidad",
+        "addToCart": "Agregar al carrito",
+        "viewAll": "Ver todo",
+        "productTypes": "Diferentes tipos de productos",
+        "puff": "Puff",
+        "puffAlt": "Puff",
+        "pods": "Pods",
+        "podsAlt": "Pods",
+        "kits": "Kits",
+        "kitsAlt": "Kits avanzados y expertos"
+    },
+    "adminPage": {
+        "dashboard": "Cuadro de Mandos",
+        "products": "Todos los Productos",
+        "orders": "Lista de Pedidos"
+    },
+    "ordersPage": {
+        "title": "Lista de pedidos",
+        "recentPurchases": "Compras recientes",
+        "product": "Producto",
+        "orderId": "Número ID",
+        "date": "Fecha",
+        "customerName": "Nombre del cliente",
+        "status": "Estado",
+        "amount": "Importe",
+        "next": "Siguiente >",
+        "statusOptions": {
+            "delivered": "Entregado",
+            "pending": "Pendiente",
+            "canceled": "Cancelado"
+        }
+    },
+    "productsPage": {
+        "categories": {
+            "pods": "Pods",
+            "kits": "Kits",
+            "puff": "Puff"
+        },
+        "categoryLabel": "Categoría",
+        "unknownCategory": "Categoría desconocida",
+        "quantity": "Cantidad",
+        "addToCart": "Agregar al carrito",
+        "pagination": "Página {{current}} de {{total}}"
+    },
+    "lineChart": {
+        "months": {
+            "jul": "JUL",
+            "aug": "AGO",
+            "sep": "SEP",
+            "oct": "OCT",
+            "nov": "NOV",
+            "dec": "DIC"
+        }
+    },
+    "dashboard": {
+        "totalEarnings": "Total de Ingresos",
+        "activeOrders": "Órdenes Activas",
+        "completedOrders": "Órdenes Completadas",
+        "returnOrders": "Órdenes de Devolución",
+        "salesGraph": "Gráfico de Ventas",
+        "bestSellers": "Los Más Vendidos",
+        "sampleProduct": "Producto de Ejemplo",
+        "sales": "{{count}} venta(s)"
+    }
+}
