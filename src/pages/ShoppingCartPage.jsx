@@ -1,8 +1,12 @@
 import React from "react";
 import { Box, Typography, Paper, Button, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useNavigate } from "react-router-dom";
 
 const ShoppingCartPage = ({ cart, setCart }) => {
+
+  const navigate = useNavigate();
+
   const handleQuantityChange = (productId, delta) => {
     setCart((prevCart) => {
       const updatedCart = [...prevCart];
@@ -25,6 +29,10 @@ const ShoppingCartPage = ({ cart, setCart }) => {
         return acc + price * quantity;
       }, 0)
       .toFixed(2);
+  };
+
+  const handleProceedToPayment = () => {
+    navigate("/payement"); // Redirection vers la page de paiement
   };
 
   return (
@@ -95,6 +103,7 @@ const ShoppingCartPage = ({ cart, setCart }) => {
               variant="contained"
               color="primary"
               fullWidth
+              onClick={handleProceedToPayment}
               sx={{ padding: "15px", textTransform: "none", fontWeight: "bold", backgroundColor: "#4C2A17" }}
             >
               Ir a la caja →
