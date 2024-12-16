@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 const CustomLineChart = () => {
   const { t } = useTranslation();
 
-  // Données du graphique avec traduction des mois
   const data = [
     { name: t('lineChart.months.jul'), value: 0 },
     { name: t('lineChart.months.aug'), value: 50 },
@@ -17,8 +16,8 @@ const CustomLineChart = () => {
 
   return (
     <LineChart
-      width={700} // Ajustez la largeur
-      height={300} // Ajustez la hauteur
+      width={700} 
+      height={300} 
       data={data}
       margin={{ top: 20, right: 20, left: 30, bottom: 20 }}
     >

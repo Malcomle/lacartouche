@@ -10,7 +10,7 @@ const ShoppingCartPage = ({ cart, setCart }) => {
       if (productIndex !== -1) {
         updatedCart[productIndex].quantity = Math.max(0, updatedCart[productIndex].quantity + delta);
         if (updatedCart[productIndex].quantity === 0) {
-          updatedCart.splice(productIndex, 1); // Supprime le produit si la quantité est 0
+          updatedCart.splice(productIndex, 1); 
         }
       }
       return updatedCart;
@@ -20,8 +20,8 @@ const ShoppingCartPage = ({ cart, setCart }) => {
   const calculateTotal = () => {
     return cart
       .reduce((acc, product) => {
-        const price = parseFloat(product.price) || 0; // Convertir en nombre ou utiliser 0 par défaut
-        const quantity = product.quantity || 0; // Utiliser 0 si quantity est indéfini
+        const price = parseFloat(product.price) || 0; 
+        const quantity = product.quantity || 0; 
         return acc + price * quantity;
       }, 0)
       .toFixed(2);

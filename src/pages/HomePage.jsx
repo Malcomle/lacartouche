@@ -14,6 +14,8 @@ import {
 
 import useProducts from "../hooks/useProducts";
 import { useTranslation } from "react-i18next";
+import { useAuth } from '../contexts/AuthContext'
+import { useEffect } from "react";
 
 const heroImage =
   "https://lh5.googleusercontent.com/p/AF1QipOn0vA-0UxwrIXozRHPmTjv0asOfn6MBf7km1T6=w424-h500-k-no";

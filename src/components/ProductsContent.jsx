@@ -17,8 +17,6 @@ import {
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useProducts from "../hooks/useProducts";
-// Import plus besoin de ProductForm ici
-// import ProductForm from "./ProductForm";
 import { useNavigate } from "react-router-dom";
 import { EditAttributesRounded, EditRounded } from "@mui/icons-material";
 
@@ -27,10 +25,8 @@ const ProductsContent = () => {
   const [open, setOpen] = useState(false); 
   const [selectedProduct, setSelectedProduct] = useState(null); 
   
-  // Supprimer le state showForm
-  // const [showForm, setShowForm] = useState(false); 
 
-  const navigate = useNavigate(); // Hook pour naviguer
+  const navigate = useNavigate();
 
   const handleOpen = (product) => {
     setSelectedProduct(product);
@@ -52,12 +48,10 @@ const ProductsContent = () => {
 
   return (
     <Box sx={{ backgroundColor: "#fff", minHeight: "100vh" }}>
-      {/* Titre principal */}
       <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3 }}>
         Todos los productos
       </Typography>
 
-      {/* Bouton Ajouter un produit */}
       <Box sx={{ p: 3 }}>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button
@@ -70,7 +64,6 @@ const ProductsContent = () => {
         </Box>
       </Box>
 
-      {/* Grille des produits */}
       <Container>
         {products && products.length > 0 ? (
           <Grid container spacing={3}>
@@ -140,7 +133,6 @@ const ProductsContent = () => {
                           {product.price}
                         </Typography>
                       </Box>
-                      {/* Actions */}
                       <Box>
                       <IconButton
                           size="small"
@@ -174,7 +166,6 @@ const ProductsContent = () => {
         )}
       </Container>
 
-      {/* Modal de confirmation */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Confirmer la suppression</DialogTitle>
         <DialogContent>
