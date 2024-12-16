@@ -28,13 +28,13 @@ import { useAuth } from "./contexts/AuthContext";
 const App = () => {
   const [open, setOpen] = useState(false);
   const [languageMenuAnchor, setLanguageMenuAnchor] = useState(null);
+  const [profileMenuAnchor, setProfileMenuAnchor] = useState(null);
   const buttonRef = useRef(null);
   const { t, i18n } = useTranslation();
   const location = useLocation(); // Obtenez l'URL actuelle
   const [cart, setCart] = useState([]);
 
   const { signIn, currentUser, logOut } = useAuth();
-
 
   const navigate = useNavigate();
 
@@ -51,6 +51,14 @@ const App = () => {
 
   const handleLanguageMenuOpen = (event) => {
     setLanguageMenuAnchor(event.currentTarget);
+  };
+
+  const handleProfileMenuClose = (event) => {
+    setProfileMenuAnchor(null);
+  };
+
+  const handleProfileMenuOpen = (event) => {
+    setProfileMenuAnchor(event.currentTarget);
   };
 
   const handleLanguageMenuClose = () => {
@@ -188,9 +196,42 @@ const App = () => {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton color="inherit">
-              <AccountCircleIcon onClick={handleProfileClick}/>
-            </IconButton>
+            {!currentUser ? (
+              <IconButton color="inherit">
+                <AccountCircleIcon onClick={handleProfileClick} />
+              </IconButton>
+            ) : (
+              <>
+                <IconButton
+                  color="inherit"
+                  onClick={handleProfileMenuOpen}
+                  aria-controls="profile"
+                  aria-haspopup="true"
+                >
+                  <AccountCircleIcon />
+                </IconButton>
+                <Menu
+                  id="profile"
+                  anchorEl={profileMenuAnchor}
+                  open={Boolean(profileMenuAnchor)}
+                  onClick={handleProfileMenuClose}
+                  PaperProps={{
+                    sx: {
+                      mt: 1,
+                      borderRadius: 1,
+                      backgroundColor: "primary.main",
+                      color: "text.secondary",
+                    },
+                  }}
+                >
+                  <MenuItem>{currentUser.email}</MenuItem>
+                  <MenuItem onClick={() => {
+                    logOut();
+                    navigate("/connexion");
+                    }}>LogOut</MenuItem>
+                </Menu>
+              </>
+            )}
 
             {/* Sélecteur de langue */}
             <IconButton
@@ -220,10 +261,14 @@ const App = () => {
               <MenuItem onClick={() => changeLanguage("es")}>Español</MenuItem>
             </Menu>
 
-            { currentUser ? (
-            <IconButton color="inherit" component={Link} to="/admin/dashboard">
-              <DesktopMacRounded/>
-            </IconButton>
+            {currentUser ? (
+              <IconButton
+                color="inherit"
+                component={Link}
+                to="/admin/dashboard"
+              >
+                <DesktopMacRounded />
+              </IconButton>
             ) : (
               // nothing
               <></>

@@ -12,6 +12,7 @@ import RestrictedAccess from './pages/RestrictedAccess';
 import ConnexionPage from "./pages/ConnexionPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
+import PayementProcess from "./pages/PayementProcessPage";
 import ServiceClientPage from "./pages/ServiceClientPage";
 import ProductForm from './components/ProductForm';
 import DashboardContent from './components/DashboardContent';
@@ -43,6 +44,8 @@ const AppRoutes = ({ cart, setCart }) => {
     <Routes>
       <Route path="/" element={<InitialPage />} />
       <Route path="/restricted" element={<RestrictedAccess />} />
+      <Route path="/payment-success" element={<PayementProcess />} />
+      <Route path="/payement" element={<PayementProcess />} />
 
       <Route element={<AgeVerificationGuard />}>
         <Route path="/home" element={<HomePage />} />

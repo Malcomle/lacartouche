@@ -15,6 +15,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const users = [
   { email: "admin@example.com", password: "admin123", role: "admin" },
@@ -27,23 +28,21 @@ const ConnexionPage = () => {
   const [popupMessage, setPopupMessage] = useState("");
   const [popupOpen, setPopupOpen] = useState(false);
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+      await signIn(email, password);
 
-    const user = users.find((u) => u.email === email);
-
-    if (!user) {
-      setPopupMessage("Adresse e-mail incorrecte.");
-      setPopupOpen(true);
-    } else if (user.password !== password) {
-      setPopupMessage("Mot de passe incorrect.");
-      setPopupOpen(true);
-    } else {
       setPopupMessage("");
       setPopupOpen(false);
-      console.log("Utilisateur connecté :", user);
-      user.role === "admin" ? navigate("/admin") : navigate("/home");
+      navigate("/home");
+    } catch (error) {
+      console.log("Erreur de connexion :", error);
+      
+      setPopupMessage("Adresse e-mail ou mot de passe incorrecte.");
+      setPopupOpen(true);
     }
   };
 
