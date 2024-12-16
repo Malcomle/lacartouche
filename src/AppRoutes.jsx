@@ -8,6 +8,7 @@ import InitialPage from './pages/InitialPage';
 import BlogPage from './pages/BlogPage';
 import RestrictedAccess from './pages/RestrictedAccess';
 import ShoppingCartPage from "./pages/ShoppingCartPage";
+import ServiceClientPage from "./pages/ServiceClientPage";
 
 const AppRoutes = ({ cart, setCart }) => {
   return (
@@ -22,6 +23,7 @@ const AppRoutes = ({ cart, setCart }) => {
       <Route path="/admin/productos" element={<AdminPage />} />
       <Route path="/admin/pedidos" element={<OrdersPage />} />
       <Route path="/shoppingcart" element={<ShoppingCartPage cart={cart} setCart={setCart} />} />
+      <Route path="/atencion-al-cliente" element={<ServiceClientPage />} />
     </Routes>
   );
 };
