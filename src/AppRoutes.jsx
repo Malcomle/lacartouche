@@ -9,6 +9,8 @@ import OrdersPage from './pages/OrdersPage';
 import InitialPage from './pages/InitialPage';
 import BlogPage from './pages/BlogPage';
 import RestrictedAccess from './pages/RestrictedAccess';
+import ConnexionPage from "./pages/ConnexionPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import ProductForm from './components/ProductForm';
 import DashboardContent from './components/DashboardContent';
@@ -47,6 +49,8 @@ const AppRoutes = ({ cart, setCart }) => {
         <Route path="/productos/:category" element={<ProductsPage cart={cart} setCart={setCart} />} />
         <Route path="/consejos" element={<ConsejosPage />} />
         <Route path="/shoppingcart" element={<ShoppingCartPage cart={cart} setCart={setCart} />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/connexion" element={<ConnexionPage />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/admin" element={<AdminPage />}>

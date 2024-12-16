@@ -70,6 +70,11 @@ const InitialPage = () => {
           No
         </Button>
       </Box>
+      <img
+        src="/images/RestrictionIcon.png"
+        alt="Restriction Icon"
+        style={{ position: 'fixed', bottom: '10px', left: '1px', width: 600, height: 200, opacity: '0.7' }}
+      />
     </Container>
   );
 };
