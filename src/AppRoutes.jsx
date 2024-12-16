@@ -12,6 +12,7 @@ import RestrictedAccess from './pages/RestrictedAccess';
 import ConnexionPage from "./pages/ConnexionPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
+import ServiceClientPage from "./pages/ServiceClientPage";
 import ProductForm from './components/ProductForm';
 import DashboardContent from './components/DashboardContent';
 import OrdersContent from './components/OrdersContent';
@@ -62,6 +63,7 @@ const AppRoutes = ({ cart, setCart }) => {
           </Route>
         </Route>
       </Route>
+      <Route path="/atencion-al-cliente" element={<ServiceClientPage />} />
     </Routes>
   );
 };
