@@ -5,6 +5,8 @@ import AdminPage from './pages/adminPage';
 import OrdersPage from './pages/OrdersPage';
 import InitialPage from './pages/InitialPage';
 import RestrictedAccess from './pages/RestrictedAccess';
+import ConnexionPage from "./pages/ConnexionPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +16,8 @@ const AppRoutes = () => {
 
       <Route path="/home" element={<HomePage />} />
       <Route path="/productos/:category" element={<ProductsPage />} />
+      <Route path="/connexion" element={<ConnexionPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/admin/productos" element={<AdminPage />} />
       <Route path="/admin/pedidos" element={<OrdersPage />} />

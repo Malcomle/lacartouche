@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import AppRoutes from "./AppRoutes";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -29,6 +29,8 @@ const App = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation(); // Obtenez l'URL actuelle
 
+  const navigate = useNavigate();
+
   // Liste des chemins où la navbar et le footer ne doivent pas apparaître
   const noLayoutPaths = ["/login", "/", "/restricted"]; 
 
@@ -52,6 +54,10 @@ const App = () => {
     i18n.changeLanguage(lng);
     localStorage.setItem("language", lng); // Sauvegarde la langue dans localStorage
     handleLanguageMenuClose();
+  };
+
+  const handleProfileClick = () => {
+    navigate("/connexion"); // Redirige vers la page de connexion
   };
 
   // Vérifiez si la page actuelle est dans la liste noLayoutPaths
@@ -163,7 +169,7 @@ const App = () => {
               <ShoppingCartIcon />
             </IconButton>
             <IconButton color="inherit">
-              <AccountCircleIcon />
+              <AccountCircleIcon onClick={handleProfileClick}/>
             </IconButton>
 
             {/* Sélecteur de langue */}
