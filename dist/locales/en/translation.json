@@ -1,0 +1,86 @@
+{
+    "title": "La Cartouche",
+    "welcome": "Welcome",
+    "products": "Products",
+    "pods": "Pods",
+    "puff": "Puff",
+    "kits": "Kits",
+    "blog": "Blog",
+    "tips": "Tips",
+    "customerSupport": "Customer Support",
+    "searchPlaceholder": "Search for products...",
+    "footerTitle": "La Cartouche",
+    "footerDescription": "Discover our electronic cigarettes and accessories for an easy transition to vaping.",
+    "otherPages": "Other Pages",
+    "homepage": {
+        "title": "La Cartouche Angers",
+        "subtitle": "Discover our electronic cigarettes and accessories for an easy transition to vaping.",
+        "buyNow": "Buy Now",
+        "heroAlt": "La Cartouche Store",
+        "bestSellers": "Best Sellers",
+        "defaultCategory": "Unspecified category",
+        "quantity": "Quantity",
+        "addToCart": "Add to Cart",
+        "viewAll": "View All",
+        "productTypes": "Different Types of Products",
+        "puff": "Puff",
+        "puffAlt": "Puff",
+        "pods": "Pods",
+        "podsAlt": "Pods",
+        "kits": "Kits",
+        "kitsAlt": "Advanced and Expert Kits"
+    },
+    "adminPage": {
+        "dashboard": "Dashboard",
+        "products": "All Products",
+        "orders": "Order List"
+    },
+    "ordersPage": {
+        "title": "Order List",
+        "recentPurchases": "Recent Purchases",
+        "product": "Product",
+        "orderId": "Order ID",
+        "date": "Date",
+        "customerName": "Customer Name",
+        "status": "Status",
+        "amount": "Amount",
+        "next": "Next >",
+        "statusOptions": {
+            "delivered": "Delivered",
+            "pending": "Pending",
+            "canceled": "Canceled"
+        }
+    },
+    "productsPage": {
+        "categories": {
+            "pods": "Pods",
+            "kits": "Kits",
+            "puff": "Puff"
+        },
+        "categoryLabel": "Category",
+        "unknownCategory": "Unknown Category",
+        "quantity": "Quantity",
+        "addToCart": "Add to cart",
+        "pagination": "Page {{current}} of {{total}}"
+    },
+    "lineChart": {
+        "months": {
+            "jul": "JUL",
+            "aug": "AUG",
+            "sep": "SEP",
+            "oct": "OCT",
+            "nov": "NOV",
+            "dec": "DEC"
+        }
+    },
+    "dashboard": {
+        "totalEarnings": "Total Earnings",
+        "activeOrders": "Active Orders",
+        "completedOrders": "Completed Orders",
+        "returnOrders": "Return Orders",
+        "salesGraph": "Sales Graph",
+        "bestSellers": "Best Sellers",
+        "sampleProduct": "Sample Product",
+        "sales": "{{count}} sale(s)"
+    }
+}

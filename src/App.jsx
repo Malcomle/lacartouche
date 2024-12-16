@@ -14,6 +14,7 @@ import {
   MenuItem,
   Container,
   Grid,
+  Badge,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -28,9 +29,10 @@ const App = () => {
   const buttonRef = useRef(null);
   const { t, i18n } = useTranslation();
   const location = useLocation(); // Obtenez l'URL actuelle
+  const [cart, setCart] = useState([]);
 
   // Liste des chemins où la navbar et le footer ne doivent pas apparaître
-  const noLayoutPaths = ["/login", "/", "/restricted"]; 
+  const noLayoutPaths = ["/login", "/", "/restricted"];
 
   const handleMouseEnter = () => {
     setOpen(true);
@@ -159,8 +161,21 @@ const App = () => {
               }}
             />
 
-            <IconButton color="inherit" sx={{ ml: 2 }}>
-              <ShoppingCartIcon />
+            <IconButton
+              color="inherit"
+              sx={{ ml: 2 }}
+              component={Link}
+              to="/shoppingcart"
+            >
+              <Badge
+                badgeContent={cart.reduce(
+                  (acc, item) => acc + item.quantity,
+                  0
+                )}
+                color="secondary"
+              >
+                <ShoppingCartIcon />
+              </Badge>
             </IconButton>
             <IconButton color="inherit">
               <AccountCircleIcon />
@@ -198,8 +213,7 @@ const App = () => {
       )}
 
       {/* Contenu principal */}
-      <AppRoutes />
-
+      <AppRoutes cart={cart} setCart={setCart} />
       {/* Afficher le footer uniquement si la page n'est pas dans noLayoutPaths */}
       {!hideLayout && (
         <Box
@@ -221,7 +235,10 @@ const App = () => {
                   {t("otherPages")}
                 </Typography>
                 <Typography variant="body2">
-                  <Link to="/blog" style={{ textDecoration: "none", color: "inherit" }}>
+                  <Link
+                    to="/blog"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
                     {t("blog")}
                   </Link>
                 </Typography>
