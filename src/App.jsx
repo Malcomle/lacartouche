@@ -12,6 +12,7 @@ import {
   MenuItem,
   Container,
   Grid,
+  Badge,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -22,6 +23,7 @@ import { useState, useRef } from "react";
 const App = () => {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
+  const [cart, setCart] = useState([]); // Gestion du panier
 
   const handleMouseEnter = () => {
     setOpen(true);
@@ -125,14 +127,16 @@ const App = () => {
             }}
           />
 
-          <IconButton color="inherit" sx={{ ml: 2 }}>
-            <ShoppingCartIcon />
+          <IconButton color="inherit" sx={{ ml: 2 }} component={Link} to="/shoppingcart">
+            <Badge badgeContent={cart.reduce((acc, item) => acc + item.quantity, 0)} color="secondary">
+              <ShoppingCartIcon />
+            </Badge>
           </IconButton>
         </Toolbar>
       </AppBar>
 
       {/* Contenu des pages (routes) */}
-      <AppRoutes />
+      <AppRoutes cart={cart} setCart={setCart} />
 
       {/* Pied de page */}
       <Box component="footer" sx={{ backgroundColor: "#f5f5f5", py: 4, mt: 4, zIndex: 1300, position: 'relative' }}>

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useProducts from '../hooks/useProducts';
 import {
   Box,
@@ -10,11 +10,10 @@ import {
   CardContent,
   CardMedia,
   CardActions,
-  TextField,
-  Button
+  Button,
 } from '@mui/material';
 
-const ProductsPage = () => {
+const ProductsPage = ({ cart, setCart }) => {
   const { category } = useParams(); // Récupère le paramètre dans l'URL (ex: "pods", "kits", "puff")
   const allProducts = useProducts(); // Tous les produits
 
@@ -22,6 +21,18 @@ const ProductsPage = () => {
   const filteredProducts = allProducts.filter(p => 
     p.category && p.category.toLowerCase() === category.toLowerCase()
   );
+
+  const handleAddToCart = (product) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+  };
 
   return (
     <Box sx={{ backgroundColor: "#fff", minHeight: "100vh", py: 4 }}>
@@ -55,7 +66,7 @@ const ProductsPage = () => {
                     variant="body1"
                     sx={{ my: 1, fontWeight: "bold" }}
                   >
-                    {product.price}
+                    €{product.price}
                   </Typography>
                   <Typography variant="body2" color="text.primary">
                     {product.category ? product.category : "Body text."}
@@ -64,21 +75,11 @@ const ProductsPage = () => {
                 <CardActions
                   sx={{ justifyContent: "space-between", px: 2, pb: 2 }}
                 >
-                  <TextField
-                    select
-                    label="Qty"
-                    size="small"
-                    SelectProps={{ native: true }}
-                    sx={{ width: 80 }}
-                  >
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                  </TextField>
                   <Button
                     variant="outlined"
                     color="primary"
                     sx={{ textTransform: "none" }}
+                    onClick={() => handleAddToCart(product)}
                   >
                     Add to cart
                   </Button>
