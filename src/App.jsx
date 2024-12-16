@@ -22,6 +22,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useTranslation } from "react-i18next";
+import { DesktopMacRounded } from "@mui/icons-material";
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -208,6 +209,10 @@ const App = () => {
               <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
               <MenuItem onClick={() => changeLanguage("es")}>Español</MenuItem>
             </Menu>
+
+            <IconButton color="inherit" component={Link} to="/admin/dashboard">
+              <DesktopMacRounded/>
+            </IconButton>
           </Toolbar>
         </AppBar>
       )}

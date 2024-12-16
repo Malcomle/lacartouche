@@ -8,6 +8,10 @@ import InitialPage from './pages/InitialPage';
 import BlogPage from './pages/BlogPage';
 import RestrictedAccess from './pages/RestrictedAccess';
 import ShoppingCartPage from "./pages/ShoppingCartPage";
+import ProductForm from './components/ProductForm';
+import DashboardContent from './components/DashboardContent';
+import OrdersContent from './components/OrdersContent';
+import ProductsContent from './components/ProductsContent';
 
 const AppRoutes = ({ cart, setCart }) => {
   return (
@@ -18,9 +22,13 @@ const AppRoutes = ({ cart, setCart }) => {
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/productos/:category" element={<ProductsPage cart={cart} setCart={setCart} />} />
       <Route path="/consejos" element={<ConsejosPage />} />
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path="/admin/productos" element={<AdminPage />} />
-      <Route path="/admin/pedidos" element={<OrdersPage />} />
+      <Route path="/admin" element={<AdminPage />}>
+        <Route path="dashboard" element={<DashboardContent />} />
+        <Route path="orders" element={<OrdersContent />} />
+        <Route path="products" element={<ProductsContent />} />
+        <Route path="product/new" element={<ProductForm />} />
+        <Route path="product/edit/:id" element={<ProductForm />} />
+      </Route>
       <Route path="/shoppingcart" element={<ShoppingCartPage cart={cart} setCart={setCart} />} />
     </Routes>
   );

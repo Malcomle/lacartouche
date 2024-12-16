@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {db} from '../firebaseConfig';
-import { collection, addDoc, getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -27,6 +27,17 @@ const useProducts = () => {
     setProducts(productsSnapshot.docs.map(doc => doc.data()));
   } 
 
+  const createProduct = async (productData) => {
+    try {
+      const productsCollection = collection(db, "products");
+      const docRef = await addDoc(productsCollection, productData);
+      await setDoc(doc(db, "products", docRef.id), { ...productData, id: docRef.id });
+      await getProducts();
+    } catch (error) {
+      console.error("Erreur lors de la création du produit:", error);
+    }
+  };
+
   useEffect(() => {   
     getProducts();
   }, []);
@@ -44,6 +55,13 @@ const useProducts = () => {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+  };
+
+  const updateProduct = async (id, productData) => {
+    if (!id) return;
+    const productRef = doc(db, "products", id.toString());
+    await updateDoc(productRef, productData);
+    await getProducts();
   };
 
   const deleteProduct = async (id) => {
@@ -65,7 +83,16 @@ const useProducts = () => {
     }
 };
 
-  return {products, initDocument, deleteProduct};
+const getProductById = async (id) => {
+  const productRef = doc(db, "products", id.toString());
+  const productSnap = await getDoc(productRef);
+  if (productSnap.exists()) {
+    return productSnap.data();
+  }
+  return null;
+};
+
+  return {products, initDocument, deleteProduct, createProduct, updateProduct, getProductById};
 };
 
 export default useProducts;

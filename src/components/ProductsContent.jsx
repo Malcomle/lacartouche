@@ -17,18 +17,20 @@ import {
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useProducts from "../hooks/useProducts";
-import ProductForm from "./ProductForm";
+// Import plus besoin de ProductForm ici
+// import ProductForm from "./ProductForm";
+import { useNavigate } from "react-router-dom";
+import { EditAttributesRounded, EditRounded } from "@mui/icons-material";
 
 const ProductsContent = () => {
   const { products, deleteProduct } = useProducts();
-  const [open, setOpen] = useState(false); // État pour la modal
-  const [selectedProduct, setSelectedProduct] = useState(null); // Produit à supprimer
-  const [showForm, setShowForm] = useState(false); // Affichage du formulaire
+  const [open, setOpen] = useState(false); 
+  const [selectedProduct, setSelectedProduct] = useState(null); 
+  
+  // Supprimer le state showForm
+  // const [showForm, setShowForm] = useState(false); 
 
-  const handleSave = (data) => {
-    console.log("Nouveau produit :", data);
-    setShowForm(false); // Fermer le formulaire après sauvegarde
-  };
+  const navigate = useNavigate(); // Hook pour naviguer
 
   const handleOpen = (product) => {
     setSelectedProduct(product);
@@ -36,13 +38,14 @@ const ProductsContent = () => {
   };
 
   const handleClose = () => {
+    
     setOpen(false);
     setSelectedProduct(null);
   };
 
   const handleConfirmDelete = () => {
     if (selectedProduct) {
-      deleteProduct(selectedProduct.id); // Suppression du produit
+      deleteProduct(selectedProduct.id); 
     }
     handleClose();
   };
@@ -56,27 +59,15 @@ const ProductsContent = () => {
 
       {/* Bouton Ajouter un produit */}
       <Box sx={{ p: 3 }}>
-        {!showForm ? (
-          <>
-            <Typography variant="h4" fontWeight="bold" mb={2}>
-              Tous les produits
-            </Typography>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button
-                variant="contained"
-                onClick={() => setShowForm(true)}
-                sx={{ borderRadius: "20px" }}
-              >
-                Ajouter un nouveau produit
-              </Button>
-            </Box>
-          </>
-        ) : (
-          <ProductForm
-            onSave={handleSave}
-            onCancel={() => setShowForm(false)}
-          />
-        )}
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            variant="contained"
+            onClick={() => navigate("/admin/product/new")}
+            sx={{ borderRadius: "20px" }}
+          >
+            Ajouter un nouveau produit
+          </Button>
+        </Box>
       </Box>
 
       {/* Grille des produits */}
@@ -99,7 +90,6 @@ const ProductsContent = () => {
                 >
                   {console.log(product)}
 
-                  {/* Contenu principal */}
                   <CardContent sx={{ p: 2 }}>
                     <Box
                       sx={{ display: "flex", justifyContent: "space-between" }}
@@ -152,11 +142,12 @@ const ProductsContent = () => {
                       </Box>
                       {/* Actions */}
                       <Box>
-                        <IconButton
+                      <IconButton
                           size="small"
                           sx={{ backgroundColor: "#f5f5f5", m: 0.5 }}
+                          onClick={() => navigate(`/admin/product/edit/${product.id}`)}
                         >
-                          <MoreVertIcon fontSize="small" />
+                          <EditRounded fontSize="small" color="primary" />
                         </IconButton>
                         <IconButton
                           size="small"
