@@ -18,6 +18,8 @@ import DashboardContent from "./components/DashboardContent";
 import OrdersContent from "./components/OrdersContent";
 import ProductsContent from "./components/ProductsContent";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import SearchResults from "./pages/SearchResults";
+
 
 const AppRoutes = ({ cart, setCart }) => {
   // Garde vérification d'âge
@@ -55,6 +57,7 @@ const AppRoutes = ({ cart, setCart }) => {
           path="/productos/:category"
           element={<ProductsPage cart={cart} setCart={setCart} />}
         />
+          <Route path="/search" element={<SearchResults />} />
         <Route path="/consejos" element={<ConsejosPage />} />
         <Route
           path="/shoppingcart"

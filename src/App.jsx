@@ -34,6 +34,7 @@ const App = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation(); // Obtenez l'URL actuelle
   const [cart, setCart] = useState([]);
+  const [searchValue, setSearchValue] = useState(""); // État pour la barre de recherche
 
   const { initDocument } = useProducts();
 
@@ -93,7 +94,16 @@ const App = () => {
 
   // Vérifiez si la page actuelle est dans la liste noLayoutPaths
   const hideLayout = noLayoutPaths.includes(location.pathname);
-
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value); // Met à jour l'état avec la valeur tapée
+  };
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchValue.trim()) {
+      navigate(`/search?query=${searchValue.trim()}`);
+    }
+  };
+    
   return (
     <Box sx={{ backgroundColor: "#fff", minHeight: "100vh" }}>
       {/* Afficher la navbar uniquement si la page n'est pas dans noLayoutPaths */}
@@ -182,19 +192,24 @@ const App = () => {
               {t("customerSupport")}
             </Button>
 
-            <TextField
-              variant="outlined"
-              size="small"
-              placeholder={t("searchPlaceholder")}
-              sx={{ ml: 2, backgroundColor: "#fff", borderRadius: 15 }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <form onSubmit={handleSearchSubmit}>
+              <TextField
+                variant="outlined"
+                size="small"
+                placeholder={t("searchPlaceholder")}
+                value={searchValue} // Ajoute l'état ici
+                onChange={handleSearchChange} // Appelle la fonction handleSearchChange
+                sx={{ ml: 2, backgroundColor: "#fff", borderRadius: 15 }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </form>
+
 
             <IconButton
               color="inherit"
