@@ -6,6 +6,7 @@ import AdminPage from './pages/adminPage';
 import OrdersPage from './pages/OrdersPage';
 import InitialPage from './pages/InitialPage';
 import BlogPage from './pages/BlogPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 import RestrictedAccess from './pages/RestrictedAccess';
 
 const AppRoutes = () => {
@@ -20,6 +21,7 @@ const AppRoutes = () => {
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/admin/productos" element={<AdminPage />} />
       <Route path="/admin/pedidos" element={<OrdersPage />} />
+      <Route path="/product/:id" element={<ProductDetailPage />} />
 
     </Routes>
   );

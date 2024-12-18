@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useProducts from '../hooks/useProducts';
+import { Link } from "react-router-dom";
 import {
   Box,
   Container,
@@ -48,12 +49,17 @@ const ProductsPage = () => {
                   flexDirection: "column",
                 }}
               >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.image}
-                  alt={product.name}
-                />
+                <Link to={`/product/${product.id || 1}`} style={{ textDecoration: "none" }}>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={product.image || "placeholder.jpg"}
+                    alt={product.name || "Product"}
+                    sx={{ cursor: "pointer" }}
+                  />
+                </Link>
+
+
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {product.name}

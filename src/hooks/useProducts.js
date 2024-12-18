@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {db} from '../firebaseConfig';
-import { collection, addDoc, getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc } from "firebase/firestore";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -65,7 +65,30 @@ const useProducts = () => {
     }
 };
 
-  return {products, initDocument, deleteProduct};
+const getProductById = async (id) => {
+  if (!id) {
+    console.error("L'ID est manquant.");
+    return null;
+  }
+
+  try {
+    const productRef = doc(db, "products", id); // Référence du document
+    const productSnapshot = await getDoc(productRef);
+
+    if (productSnapshot.exists()) {
+      return { id: productSnapshot.id, ...productSnapshot.data() }; // Retourne le produit avec son ID
+    } else {
+      console.log("Aucun produit trouvé avec cet ID :", id);
+      return null;
+    }
+  } catch (error) {
+    console.error("Erreur lors de la récupération du produit :", error);
+    return null;
+  }
 };
+
+  return {products, initDocument, deleteProduct, getProductById};
+};
+
 
 export default useProducts;
