@@ -1,12 +1,27 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
-  Box, Typography, TextField, Button, Container, Grid, Chip, Paper, IconButton, LinearProgress, Select, MenuItem, FormControl
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Container,
+  Grid,
+  Chip,
+  Paper,
+  IconButton,
+  LinearProgress,
+  Select,
+  MenuItem,
+  FormControl,
 } from "@mui/material";
 import ImageIcon from "@mui/icons-material/Image";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useDropzone } from "react-dropzone";
 import useProducts from "../hooks/useProducts";
 import { useNavigate, useParams } from "react-router-dom";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
+
 
 const categories = ["Puff", "Kits", "Pods"];
 
@@ -42,8 +57,12 @@ const ProductForm = () => {
             description: existingProduct.description || "",
             category: existingProduct.category || "",
             brand: existingProduct.brand || "",
-            stock: existingProduct.stock ? existingProduct.stock.toString() : "",
-            price: existingProduct.price ? existingProduct.price.toString() : "",
+            stock: existingProduct.stock
+              ? existingProduct.stock.toString()
+              : "",
+            price: existingProduct.price
+              ? existingProduct.price.toString()
+              : "",
           });
           setMainImage(existingProduct.image || null);
           if (existingProduct.tags) setTags(existingProduct.tags);
@@ -203,7 +222,9 @@ const ProductForm = () => {
               onBlur={() => handleBlur("name")}
               error={isError("name")}
               helperText={getHelperText("name")}
-              FormHelperTextProps={{ sx: { color: getHelperTextColor("name") } }}
+              FormHelperTextProps={{
+                sx: { color: getHelperTextColor("name") },
+              }}
             />
           </Box>
 
@@ -211,15 +232,11 @@ const ProductForm = () => {
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
               Descripción
             </Typography>
-            <TextField
-              fullWidth
-              multiline
-              rows={4}
-              placeholder="Tipo Descripción"
-              variant="outlined"
+            <ReactQuill
               value={values.description}
-              onChange={(e) => handleChange("description", e.target.value)}
+              onChange={(content) => handleChange("description", content)}
               onBlur={() => handleBlur("description")}
+              theme="snow"
             />
           </Box>
 
@@ -268,7 +285,9 @@ const ProductForm = () => {
               onBlur={() => handleBlur("brand")}
               error={isError("brand")}
               helperText={getHelperText("brand")}
-              FormHelperTextProps={{ sx: { color: getHelperTextColor("brand") } }}
+              FormHelperTextProps={{
+                sx: { color: getHelperTextColor("brand") },
+              }}
             />
           </Box>
 
@@ -285,7 +304,9 @@ const ProductForm = () => {
               onBlur={() => handleBlur("stock")}
               error={isError("stock")}
               helperText={getHelperText("stock")}
-              FormHelperTextProps={{ sx: { color: getHelperTextColor("stock") } }}
+              FormHelperTextProps={{
+                sx: { color: getHelperTextColor("stock") },
+              }}
             />
           </Box>
 
@@ -302,7 +323,9 @@ const ProductForm = () => {
               onBlur={() => handleBlur("price")}
               error={isError("price")}
               helperText={getHelperText("price")}
-              FormHelperTextProps={{ sx: { color: getHelperTextColor("price") } }}
+              FormHelperTextProps={{
+                sx: { color: getHelperTextColor("price") },
+              }}
             />
           </Box>
 
@@ -383,7 +406,9 @@ const ProductForm = () => {
                 <Typography variant="body2">
                   Suelte aquí su imagen, o navegue por
                 </Typography>
-                <Typography variant="body2">Jpeg, png están permitidos</Typography>
+                <Typography variant="body2">
+                  Jpeg, png están permitidos
+                </Typography>
               </>
             )}
           </Box>
@@ -428,7 +453,11 @@ const ProductForm = () => {
         <Button variant="contained" color="primary" onClick={handleSubmit}>
           {isEditMode ? "Modifier" : "AÑADE"}
         </Button>
-        <Button variant="outlined" color="inherit" onClick={() => navigate("/admin/products")}>
+        <Button
+          variant="outlined"
+          color="inherit"
+          onClick={() => navigate("/admin/products")}
+        >
           CANCELAR
         </Button>
       </Box>

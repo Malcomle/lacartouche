@@ -18,9 +18,10 @@ import { useEffect, useRef } from "react";
 const ProductsPage = ({ cart, setCart }) => {
   const { category } = useParams();
   const { t } = useTranslation();
-  const { products } = useProducts();
+  const { products, initDocument } = useProducts();
   console.log(products);
 
+  
   // Filtre des produits par catégorie
   const filteredProducts = products.filter(
     (p) => p.category && p.category.toLowerCase() === category.toLowerCase()

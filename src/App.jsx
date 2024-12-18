@@ -24,6 +24,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useTranslation } from "react-i18next";
 import { DesktopMacRounded } from "@mui/icons-material";
 import { useAuth } from "./contexts/AuthContext";
+import useProducts from "./hooks/useProducts";
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -33,6 +34,21 @@ const App = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation(); // Obtenez l'URL actuelle
   const [cart, setCart] = useState([]);
+
+  const { initDocument } = useProducts();
+
+  /*const firstRender = useRef(true);
+
+  useEffect(() => {
+    console.log("First render");
+
+    if (firstRender.current) {
+      console.log("First render");
+
+      firstRender.current = false;
+      initDocument();
+    }
+  }, []);*/
 
   const { signIn, currentUser, logOut } = useAuth();
 
