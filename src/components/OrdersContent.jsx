@@ -16,8 +16,9 @@ import { useTranslation } from "react-i18next";
 import useOrders from "../hooks/useOrders";
 
 const OrdersContent = () => {
-  const orders = useOrders();
+  const {orders} = useOrders();
   const { t } = useTranslation();
+  
 
   return (
     <Box sx={{ flexGrow: 1, p: 3, backgroundColor: "#fff" }}>

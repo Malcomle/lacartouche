@@ -14,7 +14,7 @@ import {
 
 import useProducts from "../hooks/useProducts";
 import { useTranslation } from "react-i18next";
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "../contexts/AuthContext";
 import { useEffect } from "react";
 
 const heroImage =
@@ -32,7 +32,7 @@ const brandLogos = [
 ];
 
 const HomePage = () => {
-  const {products} = useProducts(); // Récupère tous les produits
+  const { products } = useProducts(); // Récupère tous les produits
   const { t } = useTranslation();
 
   return (
@@ -78,7 +78,12 @@ const HomePage = () => {
       {/* Bande de logos */}
       <Box sx={{ backgroundColor: "#6a4f4b", py: 2 }}>
         <Container>
-          <Grid container spacing={6} justifyContent="center" alignItems="center">
+          <Grid
+            container
+            spacing={6}
+            justifyContent="center"
+            alignItems="center"
+          >
             {brandLogos.map((brand, index) => (
               <Grid item key={index}>
                 <Box
@@ -127,46 +132,30 @@ const HomePage = () => {
                     variant="body1"
                     sx={{ my: 1, fontWeight: "bold" }}
                   >
-                    {product.price}
+                    €{product.price}
                   </Typography>
                   <Typography variant="body2" color="text.primary">
-                    {product.category ? product.category : t("homepage.defaultCategory")}
+                    {t("productsPage.categoryLabel")}:{" "}
+                    {product.category || t("productsPage.unknownCategory")}
                   </Typography>
                 </CardContent>
                 <CardActions
                   sx={{ justifyContent: "space-between", px: 2, pb: 2 }}
                 >
-                  <TextField
-                    select
-                    label={t("homepage.quantity")}
-                    size="small"
-                    SelectProps={{ native: true }}
-                    sx={{ width: 80 }}
-                  >
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                  </TextField>
                   <Button
                     variant="outlined"
                     color="primary"
                     sx={{ textTransform: "none" }}
+                    onClick={() => handleAddToCart(product)}
                   >
-                    {t("homepage.addToCart")}
+                    {t("productsPage.addToCart")}
                   </Button>
                 </CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
-        <Box textAlign="center" mt={4}>
-          <Button
-            variant="outlined"
-            sx={{ borderRadius: "20px", textTransform: "none" }}
-          >
-            {t("homepage.viewAll")}
-          </Button>
-        </Box>
+        
       </Container>
 
       {/* Différents types de produits */}

@@ -16,9 +16,9 @@ import {
 import { useEffect, useRef } from 'react';
 
 const ProductsPage = ({ cart, setCart }) => {
-  const { category } = useParams(); // Récupère le paramètre dans l'URL (ex: "pods", "kits", "puff")
+  const { category } = useParams(); 
   const { t } = useTranslation();
-  const {products} = useProducts(); // Tous les produits
+  const {products} = useProducts(); 
   console.log(products);
 
   // Filtre des produits par catégorie

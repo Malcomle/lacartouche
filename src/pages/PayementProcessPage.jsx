@@ -11,6 +11,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import useOrders from "../hooks/useOrders";
 
 const PaymentProcessPage = () => {
   const [cardNumber, setCardNumber] = useState("");
@@ -19,6 +20,7 @@ const PaymentProcessPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
+  const { createOrder } = useOrders();
   const navigate = useNavigate();
 
   const successGif = "/images/success.gif"; // Chemin correct vers success.gif dans public
@@ -50,6 +52,14 @@ const PaymentProcessPage = () => {
     if (isCardValid(cardNumber) && isExpirationValid(expiration) && isCvvValid(cvv)) {
       setShowSuccess(true);
       setOpenPopup(true);
+      createOrder({
+        productName: "Commande de produits",
+        orderId: "#" + Math.floor(Math.random() * 1000),
+        date: new Date().toLocaleDateString(),
+        customerName: "Julien",
+        status: "En attente",
+        amount: "XXX.XX€",
+      })
       setTimeout(() => navigate("/home"), 5000); // Retourne à la page /home après 5 secondes
     } else {
       setShowError(true);
