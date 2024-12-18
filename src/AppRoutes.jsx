@@ -17,6 +17,7 @@ import ProductForm from "./components/ProductForm";
 import DashboardContent from "./components/DashboardContent";
 import OrdersContent from "./components/OrdersContent";
 import ProductsContent from "./components/ProductsContent";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 const AppRoutes = ({ cart, setCart }) => {
   // Garde vérification d'âge
@@ -61,6 +62,7 @@ const AppRoutes = ({ cart, setCart }) => {
         />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/connexion" element={<ConnexionPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/admin" element={<AdminPage />}>

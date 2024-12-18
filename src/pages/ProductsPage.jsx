@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import useProducts from '../hooks/useProducts';
+import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import useProducts from "../hooks/useProducts";
 import {
   Box,
   Container,
@@ -12,18 +12,18 @@ import {
   CardMedia,
   CardActions,
   Button,
-} from '@mui/material';
-import { useEffect, useRef } from 'react';
+} from "@mui/material";
+import { useEffect, useRef } from "react";
 
 const ProductsPage = ({ cart, setCart }) => {
-  const { category } = useParams(); 
+  const { category } = useParams();
   const { t } = useTranslation();
-  const {products} = useProducts(); 
+  const { products } = useProducts();
   console.log(products);
 
   // Filtre des produits par catégorie
-  const filteredProducts = products.filter(p => 
-    p.category && p.category.toLowerCase() === category.toLowerCase()
+  const filteredProducts = products.filter(
+    (p) => p.category && p.category.toLowerCase() === category.toLowerCase()
   );
 
   const handleAddToCart = (product) => {
@@ -31,7 +31,9 @@ const ProductsPage = ({ cart, setCart }) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
         return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       }
       return [...prevCart, { ...product, quantity: 1 }];
@@ -41,11 +43,14 @@ const ProductsPage = ({ cart, setCart }) => {
   return (
     <Box sx={{ backgroundColor: "#fff", minHeight: "100vh", py: 4 }}>
       <Container>
-        <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}>
+        <Typography
+          variant="h3"
+          sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}
+        >
           {t(`productsPage.categories.${category.toLowerCase()}`, category)}
         </Typography>
         <Grid container spacing={3} justifyContent="center">
-          {filteredProducts.map(product => (
+          {filteredProducts.map((product) => (
             <Grid item xs={12} sm={6} md={3} key={product.id}>
               <Card
                 variant="outlined"
@@ -56,12 +61,17 @@ const ProductsPage = ({ cart, setCart }) => {
                   flexDirection: "column",
                 }}
               >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.image}
-                  alt={product.name}
-                />
+                <Link
+                  to={`/product/${product.id || 1}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={product.image}
+                    alt={product.name}
+                  />
+                </Link>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {product.name}
@@ -73,9 +83,11 @@ const ProductsPage = ({ cart, setCart }) => {
                     €{product.price}
                   </Typography>
                   <Typography variant="body2" color="text.primary">
-                    {t('productsPage.categoryLabel')}: {product.category || t('productsPage.unknownCategory')}
+                    {t("productsPage.categoryLabel")}:{" "}
+                    {product.category || t("productsPage.unknownCategory")}
                   </Typography>
                 </CardContent>
+
                 <CardActions
                   sx={{ justifyContent: "space-between", px: 2, pb: 2 }}
                 >
@@ -85,7 +97,7 @@ const ProductsPage = ({ cart, setCart }) => {
                     sx={{ textTransform: "none" }}
                     onClick={() => handleAddToCart(product)}
                   >
-                    {t('productsPage.addToCart')}
+                    {t("productsPage.addToCart")}
                   </Button>
                 </CardActions>
               </Card>
@@ -96,7 +108,7 @@ const ProductsPage = ({ cart, setCart }) => {
         {/* Pagination */}
         <Box textAlign="center" mt={4}>
           <Typography variant="body2">
-            {t('productsPage.pagination', { current: 1, total: 10 })}
+            {t("productsPage.pagination", { current: 1, total: 10 })}
           </Typography>
         </Box>
       </Container>
