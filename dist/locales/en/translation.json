@@ -200,7 +200,7 @@
         "passwordPlaceholder": "PASSWORD",
         "confirmPasswordLabel": "Confirm Password",
         "confirmPasswordPlaceholder": "CONFIRM PASSWORD",
-        "signUpButton": "SIGN UP",
+        "loginButton": "SIGN UP",
         "alreadyHaveAccount": "Already have an account?",
         "loginLink": "Log in",
         "errorTitle": "Sign Up Error",
@@ -221,5 +221,5 @@
         "errorTitle": "Login Error",
         "loginError": "Incorrect email address or password.",
         "okButton": "OK"
-    }
+    }   
 }

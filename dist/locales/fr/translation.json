@@ -200,7 +200,7 @@
         "passwordPlaceholder": "PASSWORD",
         "confirmPasswordLabel": "Confirmer le mot de passe",
         "confirmPasswordPlaceholder": "CONFIRM PASSWORD",
-        "signUpButton": "S'inscrire",
+        "loginButton": "S'inscrire",
         "alreadyHaveAccount": "Vous avez déjà un compte ?",
         "loginLink": "Connectez-vous",
         "errorTitle": "Erreur d'inscription",

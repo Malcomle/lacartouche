@@ -17,19 +17,19 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useTranslation } from "react-i18next";
 
-const ConnexionPage = () => {
+const InscriptionPage = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [popupMessage, setPopupMessage] = useState("");
   const [popupOpen, setPopupOpen] = useState(false);
   const navigate = useNavigate();
-  const { signIn } = useAuth();
+  const { signUp } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signIn(email, password);
+      await signUp(email, password);
 
       setPopupMessage("");
       setPopupOpen(false);
@@ -37,7 +37,7 @@ const ConnexionPage = () => {
     } catch (error) {
       console.log("Erreur de connexion :", error);
 
-      setPopupMessage(t("connexionPage.loginError"));
+      setPopupMessage(t("inscriptionPage.loginError"));
       setPopupOpen(true);
     }
   };
@@ -60,7 +60,7 @@ const ConnexionPage = () => {
     >
       {/* Titre */}
       <Typography variant="h4" component="h1" sx={{ marginBottom: 3 }}>
-        {t("connexionPage.title")}
+        {t("inscriptionPage.title")}
       </Typography>
 
       {/* Conteneur de l'image */}
@@ -98,7 +98,7 @@ const ConnexionPage = () => {
       >
         {/* Champ Email */}
         <TextField
-          placeholder={t("connexionPage.usernamePlaceholder")}
+          placeholder={t("inscriptionPage.usernamePlaceholder")}
           variant="outlined"
           fullWidth
           value={email}
@@ -112,12 +112,12 @@ const ConnexionPage = () => {
             style: { fontWeight: "bold", textTransform: "uppercase" },
           }}
           required
-          label={t("connexionPage.usernameLabel")}
+          label={t("inscriptionPage.usernameLabel")}
         />
 
         {/* Champ Password */}
         <TextField
-          placeholder={t("connexionPage.passwordPlaceholder")}
+          placeholder={t("inscriptionPage.passwordPlaceholder")}
           type="password"
           variant="outlined"
           fullWidth
@@ -132,7 +132,25 @@ const ConnexionPage = () => {
             style: { fontWeight: "bold", textTransform: "uppercase" },
           }}
           required
-          label={t("connexionPage.passwordLabel")}
+          label={t("inscriptionPage.passwordLabel")}
+        />
+
+        {/* Champ Password */}
+        <TextField
+          placeholder={t("inscriptionPage.passwordPlaceholder")}
+          type="password"
+          variant="outlined"
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <LockOutlinedIcon />
+              </InputAdornment>
+            ),
+            style: { fontWeight: "bold", textTransform: "uppercase" },
+          }}
+          required
+          label={t("inscriptionPage.passwordLabel")}
         />
 
         {/* Bouton Login */}
@@ -148,7 +166,7 @@ const ConnexionPage = () => {
             "&:hover": { backgroundColor: "#333" },
           }}
         >
-          {t("connexionPage.loginButton")}
+          {t("inscriptionPage.loginButton")}
         </Button>
 
         {/* Lien vers Inscription */}
@@ -161,49 +179,29 @@ const ConnexionPage = () => {
             fontWeight: "normal",
           }}
         >
-          {t("connexionPage.noAccount")}{" "}
+          {t("inscriptionPage.alreadyHaveAccount")}{" "}
           <a
-            href="/register"
+            href="/connexion"
             style={{
               textDecoration: "none",
               color: "#000",
             }}
           >
-            {t("connexionPage.signUpLink")}
+            {t("inscriptionPage.loginLink")}
           </a>
         </Typography>
       </Box>
 
-      {/* Lien Forgot Password */}
-      <Typography
-        variant="body2"
-        sx={{
-          marginTop: 2,
-          textAlign: "center",
-          color: "#000",
-          fontWeight: "normal",
-        }}
-      >
-        <a
-          href="/forgot-password"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-          }}
-        >
-          {t("connexionPage.forgotPassword")}
-        </a>
-      </Typography>
 
       {/* Pop-up de notification */}
       <Dialog open={popupOpen} onClose={handleClosePopup}>
-        <DialogTitle>{t("connexionPage.errorTitle")}</DialogTitle>
+        <DialogTitle>{t("inscriptionPage.errorTitle")}</DialogTitle>
         <DialogContent>
           <Typography>{popupMessage}</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClosePopup} color="primary">
-            {t("connexionPage.okButton")}
+            {t("inscriptionPage.okButton")}
           </Button>
         </DialogActions>
       </Dialog>
@@ -211,4 +209,4 @@ const ConnexionPage = () => {
   );
 };
 
-export default ConnexionPage;
+export default InscriptionPage;
