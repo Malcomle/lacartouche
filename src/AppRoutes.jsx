@@ -21,7 +21,6 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import SearchResults from "./pages/SearchResults";
 import InscriptionPage from "./pages/InscriptionPage";
 
-
 const AppRoutes = ({ cart, setCart }) => {
   // Garde vérification d'âge
   const AgeVerificationGuard = () => {
@@ -38,7 +37,7 @@ const AppRoutes = ({ cart, setCart }) => {
     const { currentUser } = useAuth();
     if (!currentUser) {
       // Redirige vers /restricted si l'utilisateur n'est pas connecté
-      return <Navigate to="/home" replace />;
+      return <Navigate to="/connexion" replace />;
     }
     return <Outlet />;
   };
@@ -49,16 +48,17 @@ const AppRoutes = ({ cart, setCart }) => {
       <Route path="/restricted" element={<RestrictedAccess />} />
 
       <Route element={<AgeVerificationGuard />}>
-        <Route path="/payment-success" element={<PayementProcess />} />
-        <Route path="/payement" element={<PayementProcess />} />
-        <Route path="/home" element={<HomePage cart={cart} setCart={setCart} />} />
+        <Route
+          path="/home"
+          element={<HomePage cart={cart} setCart={setCart} />}
+        />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/atencion-al-cliente" element={<ServiceClientPage />} />
         <Route
           path="/productos/:category"
           element={<ProductsPage cart={cart} setCart={setCart} />}
         />
-          <Route path="/search" element={<SearchResults />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/consejos" element={<ConsejosPage />} />
         <Route
           path="/shoppingcart"
@@ -70,6 +70,8 @@ const AppRoutes = ({ cart, setCart }) => {
         <Route path="/product/:id" element={<ProductDetailPage />} />
 
         <Route element={<ProtectedRoute />}>
+          <Route path="/payment-success" element={<PayementProcess />} />
+          <Route path="/payement" element={<PayementProcess />} />
           <Route path="/admin" element={<AdminPage />}>
             <Route path="dashboard" element={<DashboardContent />} />
             <Route path="orders" element={<OrdersContent />} />

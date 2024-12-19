@@ -82,5 +82,144 @@
         "bestSellers": "Los Más Vendidos",
         "sampleProduct": "Producto de Ejemplo",
         "sales": "{{count}} venta(s)"
+    },
+    "blogPage": {
+        "title": "Blog",
+        "subtitle": "Descubre las últimas tendencias y consejos sobre cigarrillos electrónicos para mejorar tu experiencia de vapeo.",
+        "posts": {
+            "1": {
+                "title": "¿Es Seguro Vapear? Desmintiendo Mitos y Comprendiendo los Riesgos",
+                "description": "Este artículo aborda los mitos más comunes sobre el vapeo y ofrece información basada en estudios...",
+                "fullText": "El vapeo ha sido objeto de debates y malentendidos. En este artículo, exploramos estudios recientes sobre los riesgos y beneficios del vapeo comparado con los cigarrillos tradicionales. Analizamos los mitos más comunes y te ofrecemos información objetiva para tomar decisiones informadas."
+            },
+            "2": {
+                "title": "Los Mejores Sabores de E-líquidos para Probar este Año",
+                "description": "Una reseña de los sabores de e-líquidos más populares y en tendencia, ideal para quienes quieren descubrir nuevos sabores...",
+                "fullText": "Este año, los sabores frutales y postres lideran las tendencias de e-líquidos. Analizamos las mejores marcas y sabores como sandía, mango, fresa, y combinaciones innovadoras como pastel de limón y vainilla. Descubre cuáles son los más recomendados por los expertos y los usuarios."
+            }
+        },
+        "readMore": "Leer más",
+        "close": "Cerrar"
+    },
+    "consejosPage": {
+        "title": "Consejos",
+        "subtitle": "Encuentra los mejores consejos y guías para mejorar tu experiencia de vapeo y cuidar tus cigarrillos electrónicos.",
+        "posts": {
+            "1": {
+                "title": "Guía para Principiantes: Cómo Elegir tu Primer Cigarrillo Electrónico",
+                "description": "En este artículo, explicamos los diferentes tipos de cigarrillos electrónicos, sus características, y cómo elegir el modelo adecuado según tus necesidades...",
+                "fullText": "Aquí encontrarás una guía detallada sobre los mejores kits para principiantes, incluyendo pros y contras de cada uno, recomendaciones de marcas y consejos para comenzar tu experiencia de vapeo."
+            },
+            "2": {
+                "title": "Cómo Mantener y Limpiar tu Cigarrillo Electrónico Correctamente",
+                "description": "Este artículo ofrece una guía paso a paso para el mantenimiento y la limpieza de tu dispositivo, garantizando su durabilidad y un rendimiento óptimo.",
+                "fullText": "El mantenimiento adecuado incluye la limpieza regular de las boquillas, el cambio de resistencias y la revisión de las baterías para evitar problemas a largo plazo. Aquí te enseñamos cómo hacerlo de forma sencilla y práctica."
+            }
+        },
+        "readMore": "Leer más",
+        "close": "Cerrar"
+    },
+    "customerSupportPage": {
+        "title": "Atención al Cliente - La Cartouche",
+        "subtitle": "En La Cartouche, estamos aquí para ayudarte con cualquier duda sobre productos, pedidos o envíos. No dudes en contactarnos o visitarnos.",
+        "addressTitle": "Dirección",
+        "address": "9 Rue Saint-Étienne, 49100 Angers, Francia",
+        "contactTitle": "Contacto",
+        "phone": "Teléfono: 08 50 50 29 32 (Servicio de pago)",
+        "hoursTitle": "Horarios de Apertura",
+        "hours": {
+            "mondayThursday": "Lunes a Jueves: 7:30 - 20:00",
+            "friday": "Viernes: 7:30 - 21:00",
+            "saturday": "Sábado: 8:00 - 22:00",
+            "sunday": "Domingo: 11:00 - 20:00"
+        },
+        "locationTitle": "Ubicación",
+        "locationIframeTitle": "Ubicación de La Cartouche",
+        "viewFullMap": "Ver en mapa completo"
+    },
+    "shoppingCartPage": {
+        "emptyCart": "Tu carrito está vacío",
+        "productList": "Lista de Productos",
+        "colorLabel": "Color",
+        "colorNotAvailable": "N/A",
+        "orderSummary": "Resumen del Pedido",
+        "subtotal": "Subtotal",
+        "discount": "Descuento",
+        "total": "Total",
+        "addPromoCode": "Añadir código promocional",
+        "proceedToCheckout": "Ir a la caja →"
+    },
+    "paymentPage": {
+        "title": "Pago",
+        "successTitle": "Pago Confirmado",
+        "successMessage": "Su pago se ha realizado con éxito. Será redirigido a la página principal en 5 segundos.",
+        "successConfirm": "Ok",
+        "errorMessage": "Por favor, revise su información de pago.",
+        "errorReturn": "Volver a la página de pago",
+        "cardNumber": "Número de Tarjeta Bancaria",
+        "expirationDate": "Fecha de Expiración (MM/AA)",
+        "cvv": "CVV",
+        "validatePayment": "Confirmar el Pago",
+        "orderName": "Pedido de productos"
+    },
+    "productForm": {
+        "editTitle": "Modificar el producto",
+        "createTitle": "Detalles del producto",
+        "name": "Nombre del producto",
+        "namePlaceholder": "Escriba aquí el nombre",
+        "description": "Descripción",
+        "category": "Categoría",
+        "selectCategory": "Seleccione una categoría",
+        "brand": "Marca",
+        "brandPlaceholder": "Escriba aquí el nombre de la marca",
+        "stock": "Cantidad en stock",
+        "price": "Precio de venta",
+        "tags": "Etiqueta",
+        "selectMainImage": "Seleccionar la imagen principal",
+        "productGallery": "Galería de productos",
+        "dropOrBrowse": "Suelte aquí su imagen, o navegue",
+        "allowedFormats": "Formatos permitidos: jpeg, png",
+        "dropImageHere": "Suelte su imagen aquí...",
+        "valid": "Válido",
+        "errors": {
+            "nameRequired": "El nombre es requerido.",
+            "categoryRequired": "La categoría es requerida.",
+            "brandRequired": "La marca es requerida.",
+            "stockPositiveInteger": "El stock debe ser un entero positivo.",
+            "pricePositiveNumber": "El precio debe ser un número positivo."
+        },
+        "editButton": "Modificar",
+        "addButton": "Añadir",
+        "cancelButton": "Cancelar"
+    },
+    "inscriptionPage": {
+        "title": "Inscripción",
+        "usernameLabel": "Nombre de usuario",
+        "usernamePlaceholder": "USERNAME",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "PASSWORD",
+        "confirmPasswordLabel": "Confirmar Contraseña",
+        "confirmPasswordPlaceholder": "CONFIRM PASSWORD",
+        "signUpButton": "INSCRÍBETE",
+        "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+        "loginLink": "Inicia sesión",
+        "errorTitle": "Error de inscripción",
+        "signupError": "Error durante la inscripción. Por favor, verifica tu información.",
+        "passwordMismatch": "Las contraseñas no coinciden.",
+        "okButton": "OK"
+    },
+    "connexionPage": {
+        "title": "Conexión",
+        "usernameLabel": "Nombre de usuario",
+        "usernamePlaceholder": "USERNAME",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "PASSWORD",
+        "loginButton": "LOGIN",
+        "noAccount": "¿No tienes una cuenta?",
+        "signUpLink": "Inscríbete",
+        "forgotPassword": "¿Olvidaste tu contraseña?",
+        "errorTitle": "Error de conexión",
+        "loginError": "Dirección de correo electrónico o contraseña incorrecta.",
+        "okButton": "OK"
     }
 }

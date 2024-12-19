@@ -82,5 +82,144 @@
         "bestSellers": "Best Sellers",
         "sampleProduct": "Sample Product",
         "sales": "{{count}} sale(s)"
+    },
+    "blogPage": {
+        "title": "Blog",
+        "subtitle": "Discover the latest trends and advice on electronic cigarettes to improve your vaping experience.",
+        "posts": {
+            "1": {
+                "title": "Is it Safe to Vape? Debunking Myths and Understanding Risks",
+                "description": "This article addresses the most common myths about vaping and offers research-based information...",
+                "fullText": "Vaping has been a subject of debate and misunderstanding. In this article, we explore recent studies on the risks and benefits of vaping compared to traditional cigarettes. We analyze the most common myths and provide objective information to help you make informed decisions."
+            },
+            "2": {
+                "title": "The Best E-liquid Flavors to Try This Year",
+                "description": "A review of the most popular and trending e-liquid flavors, perfect for those looking to discover new tastes...",
+                "fullText": "This year, fruity and dessert flavors lead the e-liquid trends. We review the best brands and flavors such as watermelon, mango, strawberry, and innovative combinations like lemon cake and vanilla. Discover which ones are most recommended by experts and users."
+            }
+        },
+        "readMore": "Read More",
+        "close": "Close"
+    },
+    "consejosPage": {
+        "title": "Tips",
+        "subtitle": "Find the best tips and guides to improve your vaping experience and take care of your electronic cigarettes.",
+        "posts": {
+            "1": {
+                "title": "Beginner's Guide: How to Choose Your First Electronic Cigarette",
+                "description": "In this article, we explain the different types of electronic cigarettes, their characteristics, and how to choose the right model for your needs...",
+                "fullText": "Here you'll find a detailed guide on the best beginner kits, including the pros and cons of each, brand recommendations, and tips to start your vaping journey."
+            },
+            "2": {
+                "title": "How to Properly Maintain and Clean Your Electronic Cigarette",
+                "description": "This article offers a step-by-step guide to maintaining and cleaning your device, ensuring durability and optimal performance.",
+                "fullText": "Proper maintenance includes regular cleaning of the mouthpieces, changing coils, and checking batteries to prevent long-term issues. We'll show you how to do this simply and effectively."
+            }
+        },
+        "readMore": "Read More",
+        "close": "Close"
+    },
+    "customerSupportPage": {
+        "title": "Customer Support - La Cartouche",
+        "subtitle": "At La Cartouche, we are here to help with any questions about products, orders, or shipping. Feel free to contact us or visit our store.",
+        "addressTitle": "Address",
+        "address": "9 Rue Saint-Étienne, 49100 Angers, France",
+        "contactTitle": "Contact",
+        "phone": "Phone: 08 50 50 29 32 (Paid service)",
+        "hoursTitle": "Opening Hours",
+        "hours": {
+            "mondayThursday": "Monday to Thursday: 7:30 - 20:00",
+            "friday": "Friday: 7:30 - 21:00",
+            "saturday": "Saturday: 8:00 - 22:00",
+            "sunday": "Sunday: 11:00 - 20:00"
+        },
+        "locationTitle": "Location",
+        "locationIframeTitle": "La Cartouche Location",
+        "viewFullMap": "View Full Map"
+    },
+    "shoppingCartPage": {
+        "emptyCart": "Your cart is empty",
+        "productList": "Product List",
+        "colorLabel": "Color",
+        "colorNotAvailable": "N/A",
+        "orderSummary": "Order Summary",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "total": "Total",
+        "addPromoCode": "Add promotional code",
+        "proceedToCheckout": "Proceed to checkout →"
+    },
+    "paymentPage": {
+        "title": "Payment",
+        "successTitle": "Payment Confirmed",
+        "successMessage": "Your payment has been successfully processed. You will be redirected to the main page in 5 seconds.",
+        "successConfirm": "Ok",
+        "errorMessage": "Please check your payment information.",
+        "errorReturn": "Return to payment page",
+        "cardNumber": "Credit Card Number",
+        "expirationDate": "Expiration Date (MM/YY)",
+        "cvv": "CVV",
+        "validatePayment": "Confirm Payment",
+        "orderName": "Product Order"
+    },
+    "productForm": {
+        "editTitle": "Edit Product",
+        "createTitle": "Product Details",
+        "name": "Product Name",
+        "namePlaceholder": "Type the name here",
+        "description": "Description",
+        "category": "Category",
+        "selectCategory": "Select a category",
+        "brand": "Brand",
+        "brandPlaceholder": "Type the brand name here",
+        "stock": "Stock Quantity",
+        "price": "Sale Price",
+        "tags": "Tag",
+        "selectMainImage": "Select Main Image",
+        "productGallery": "Product Gallery",
+        "dropOrBrowse": "Drop your image here, or browse",
+        "allowedFormats": "Allowed formats: jpeg, png",
+        "dropImageHere": "Drop your image here...",
+        "valid": "Valid",
+        "errors": {
+            "nameRequired": "Name is required.",
+            "categoryRequired": "Category is required.",
+            "brandRequired": "Brand is required.",
+            "stockPositiveInteger": "Stock must be a positive integer.",
+            "pricePositiveNumber": "Price must be a positive number."
+        },
+        "editButton": "Edit",
+        "addButton": "Add",
+        "cancelButton": "Cancel"
+    },
+    "inscriptionPage": {
+        "title": "Sign Up",
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "USERNAME",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "PASSWORD",
+        "confirmPasswordLabel": "Confirm Password",
+        "confirmPasswordPlaceholder": "CONFIRM PASSWORD",
+        "signUpButton": "SIGN UP",
+        "alreadyHaveAccount": "Already have an account?",
+        "loginLink": "Log in",
+        "errorTitle": "Sign Up Error",
+        "signupError": "Error during sign up. Please check your information.",
+        "passwordMismatch": "Passwords do not match.",
+        "okButton": "OK"
+    },
+    "connexionPage": {
+        "title": "Login",
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "USERNAME",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "PASSWORD",
+        "loginButton": "LOGIN",
+        "noAccount": "Don't have an account?",
+        "signUpLink": "Sign up",
+        "forgotPassword": "Forgot password?",
+        "errorTitle": "Login Error",
+        "loginError": "Incorrect email address or password.",
+        "okButton": "OK"
     }
 }
