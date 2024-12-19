@@ -59,7 +59,7 @@ const ProductsContent = () => {
             onClick={() => navigate("/admin/product/new")}
             sx={{ borderRadius: "20px" }}
           >
-            Ajouter un nouveau produit
+            Add new product
           </Button>
         </Box>
       </Box>

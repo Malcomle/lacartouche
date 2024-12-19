@@ -292,7 +292,7 @@ const App = () => {
               <MenuItem onClick={() => changeLanguage("es")}>Español</MenuItem>
             </Menu>
 
-            {currentUser ? (
+            {currentUser && currentUser.email == "admin@cartouche.com" ? (
               <IconButton
                 color="inherit"
                 component={Link}

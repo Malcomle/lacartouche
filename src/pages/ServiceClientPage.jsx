@@ -1,53 +1,47 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-  Button,
-} from "@mui/material";
+import { Box, Typography, Card, CardContent, Grid, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const ServiceClientPage = () => {
+  const { t } = useTranslation();
+
   return (
     <Box sx={{ padding: 4 }}>
       {/* En-tête de la page */}
       <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-        Atención al Cliente - La Cartouche
+        {t("customerSupportPage.title")}
       </Typography>
       <Typography variant="subtitle1" sx={{ marginBottom: 4 }}>
-        En La Cartouche, estamos aquí para ayudarte con cualquier duda sobre
-        productos, pedidos o envíos. No dudes en contactarnos o visitarnos.
+        {t("customerSupportPage.subtitle")}
       </Typography>
 
-      {/* Contenu principal */}
       <Grid container spacing={4}>
         {/* Informations de contact */}
         <Grid item xs={12} md={6}>
           <Card sx={{ boxShadow: 3 }}>
             <CardContent>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Dirección
+                {t("customerSupportPage.addressTitle")}
               </Typography>
               <Typography sx={{ marginBottom: 2 }}>
-                9 Rue Saint-Étienne, 49100 Angers, Francia
+                {t("customerSupportPage.address")}
               </Typography>
 
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Contacto
+                {t("customerSupportPage.contactTitle")}
               </Typography>
               <Typography sx={{ marginBottom: 2 }}>
-                Teléfono: 08 50 50 29 32 (Servicio de pago)
+                {t("customerSupportPage.phone")}
               </Typography>
 
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Horarios de Apertura
+                {t("customerSupportPage.hoursTitle")}
               </Typography>
               <ul style={{ marginTop: "8px", paddingLeft: "16px" }}>
-                <li>Lunes a Jueves: 7:30 - 20:00</li>
-                <li>Viernes: 7:30 - 21:00</li>
-                <li>Sábado: 8:00 - 22:00</li>
-                <li>Domingo: 11:00 - 20:00</li>
+                <li>{t("customerSupportPage.hours.mondayThursday")}</li>
+                <li>{t("customerSupportPage.hours.friday")}</li>
+                <li>{t("customerSupportPage.hours.saturday")}</li>
+                <li>{t("customerSupportPage.hours.sunday")}</li>
               </ul>
             </CardContent>
           </Card>
@@ -58,10 +52,10 @@ const ServiceClientPage = () => {
           <Card sx={{ boxShadow: 3 }}>
             <CardContent>
               <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-                Ubicación
+                {t("customerSupportPage.locationTitle")}
               </Typography>
               <iframe
-                title="Ubicación de La Cartouche"
+                title={t("customerSupportPage.locationIframeTitle")}
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-0.555513%2C47.468655%2C-0.551513%2C47.472655&amp;layer=mapnik&amp;marker=47.470655%2C-0.553513"
                 width="100%"
                 height="250"
@@ -82,7 +76,7 @@ const ServiceClientPage = () => {
                   )
                 }
               >
-                Ver en mapa completo
+                {t("customerSupportPage.viewFullMap")}
               </Button>
             </CardContent>
           </Card>

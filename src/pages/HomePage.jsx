@@ -16,6 +16,7 @@ import useProducts from "../hooks/useProducts";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const heroImage =
   "https://lh5.googleusercontent.com/p/AF1QipOn0vA-0UxwrIXozRHPmTjv0asOfn6MBf7km1T6=w424-h500-k-no";
@@ -31,9 +32,24 @@ const brandLogos = [
   { name: "Aspire", img: "images/aspireIcon.png" },
 ];
 
-const HomePage = () => {
+const HomePage = ({cart, setCart}) => {
   const { products } = useProducts(); // Récupère tous les produits
   const { t } = useTranslation();
+
+  const handleAddToCart = (event, product) => {
+    event.preventDefault(); // Empêche le comportement par défaut
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+  };
 
   return (
     <Box sx={{ backgroundColor: "#fff", minHeight: "100vh" }}>
@@ -118,12 +134,17 @@ const HomePage = () => {
                   flexDirection: "column",
                 }}
               >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.image}
-                  alt={product.name}
-                />
+                <Link
+                  to={`/product/${product.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={product.image}
+                    alt={product.name}
+                  />
+                </Link>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {product.name}
@@ -146,7 +167,7 @@ const HomePage = () => {
                     variant="outlined"
                     color="primary"
                     sx={{ textTransform: "none" }}
-                    onClick={() => handleAddToCart(product)}
+                    onClick={(event) => handleAddToCart(event, product)}
                   >
                     {t("productsPage.addToCart")}
                   </Button>
@@ -155,7 +176,6 @@ const HomePage = () => {
             </Grid>
           ))}
         </Grid>
-        
       </Container>
 
       {/* Différents types de produits */}
@@ -198,15 +218,20 @@ const HomePage = () => {
                   {t("homepage.puff")}
                 </Typography>
                 <Box
-                  component="img"
-                  src="images/puffImage.png"
-                  alt={t("homepage.puffAlt")}
-                  sx={{
-                    width: "85%",
-                    borderRadius: "10px",
-                    objectFit: "cover",
-                  }}
-                />
+                  component={Link}
+                  to="/productos/puff"
+                  sx={{ textDecoration: "none" }}
+                >
+                  <img
+                    src="images/puffImage.png"
+                    alt={t("homepage.puffAlt")}
+                    style={{
+                      width: "85%",
+                      borderRadius: "10px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
               </Paper>
             </Grid>
 
@@ -232,15 +257,20 @@ const HomePage = () => {
                   {t("homepage.pods")}
                 </Typography>
                 <Box
-                  component="img"
-                  src="images/podsImage.png"
-                  alt={t("homepage.podsAlt")}
-                  sx={{
-                    width: "78%",
-                    borderRadius: "10px",
-                    objectFit: "cover",
-                  }}
-                />
+                  component={Link}
+                  to="/productos/pods"
+                  sx={{ textDecoration: "none" }}
+                >
+                  <img
+                    src="images/podsImage.png"
+                    alt={t("homepage.podsAlt")}
+                    style={{
+                      width: "78%",
+                      borderRadius: "10px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
               </Paper>
             </Grid>
 
@@ -263,15 +293,20 @@ const HomePage = () => {
                   {t("homepage.kits")}
                 </Typography>
                 <Box
-                  component="img"
-                  src="images/kitsImage.png"
-                  alt={t("homepage.kitsAlt")}
-                  sx={{
-                    width: "70%",
-                    borderRadius: "10px",
-                    objectFit: "cover",
-                  }}
-                />
+                  component={Link}
+                  to="/productos/kits"
+                  sx={{ textDecoration: "none" }}
+                >
+                  <img
+                    src="images/kitsImage.png"
+                    alt={t("homepage.kitsAlt")}
+                    style={{
+                      width: "70%",
+                      borderRadius: "10px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
               </Paper>
             </Grid>
           </Grid>
