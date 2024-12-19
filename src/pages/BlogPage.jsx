@@ -9,31 +9,23 @@ import {
   Button,
   Modal,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const blogPosts = [
   {
     id: 1,
-    title: "¿Es Seguro Vapear? Desmintiendo Mitos y Comprendiendo los Riesgos",
-    description:
-      "Este artículo aborda los mitos más comunes sobre el vapeo y ofrece información basada en estudios...",
-    fullText:
-      "El vapeo ha sido objeto de debates y malentendidos. En este artículo, exploramos estudios recientes sobre los riesgos y beneficios del vapeo comparado con los cigarrillos tradicionales. Analizamos los mitos más comunes y te ofrecemos información objetiva para tomar decisiones informadas.",
-      image: "images/blog1.png",
+    image: "images/blog1.png",
   },
   {
     id: 2,
-    title: "Los Mejores Sabores de E-líquidos para Probar este Año",
-    description:
-      "Una reseña de los sabores de e-líquidos más populares y en tendencia, ideal para quienes quieren descubrir nuevos sabores...",
-    fullText:
-      "Este año, los sabores frutales y postres lideran las tendencias de e-líquidos. Analizamos las mejores marcas y sabores como sandía, mango, fresa, y combinaciones innovadoras como pastel de limón y vainilla. Descubre cuáles son los más recomendados por los expertos y los usuarios.",
-      image: "images/blog2.png",
+    image: "images/blog2.png",
   },
 ];
 
 const BlogPage = () => {
-  const [open, setOpen] = useState(false); // Contrôle la modale
-  const [selectedPost, setSelectedPost] = useState(null); // Article sélectionné
+  const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const handleOpen = (post) => {
     setSelectedPost(post);
@@ -47,15 +39,13 @@ const BlogPage = () => {
 
   return (
     <Box sx={{ padding: 4 }}>
-      {/* En-tête de la page */}
       <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-        Blog
+        {t("blogPage.title")}
       </Typography>
       <Typography variant="subtitle1" sx={{ marginBottom: 4 }}>
-        Descubre las últimas tendencias y consejos sobre cigarrillos electrónicos para mejorar tu experiencia de vapeo.
+        {t("blogPage.subtitle")}
       </Typography>
 
-      {/* Liste des articles */}
       <Grid container spacing={6}>
         {blogPosts.map((post) => (
           <Grid item xs={12} md={6} key={post.id}>
@@ -70,17 +60,17 @@ const BlogPage = () => {
             >
               <CardMedia
                 component="img"
-                alt={post.title}
+                alt={t(`blogPage.posts.${post.id.toString()}.title`)}
                 height="200"
                 image={post.image}
                 sx={{ objectFit: "cover", width: "100%" }}
               />
               <CardContent>
                 <Typography variant="h6" sx={{ fontWeight: "bold", color: "#000" }} gutterBottom>
-                  {post.title}
+                  {t(`blogPage.posts.${post.id}.title`)}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#000" }} gutterBottom>
-                  {post.description}
+                  {t(`blogPage.posts.${post.id}.description`)}
                 </Typography>
                 <Button
                   variant="contained"
@@ -93,7 +83,7 @@ const BlogPage = () => {
                   }}
                   onClick={() => handleOpen(post)}
                 >
-                  Leer más
+                  {t("blogPage.readMore")}
                 </Button>
               </CardContent>
             </Card>
@@ -127,14 +117,14 @@ const BlogPage = () => {
                 variant="h5"
                 sx={{ fontWeight: "bold", marginBottom: 2 }}
               >
-                {selectedPost.title}
+                {t(`blogPage.posts.${selectedPost.id}.title`)}
               </Typography>
               <Typography
                 id="modal-description"
                 variant="body1"
                 sx={{ color: "#000", marginBottom: 2 }}
               >
-                {selectedPost.fullText}
+                {t(`blogPage.posts.${selectedPost.id}.fullText`)}
               </Typography>
               <Button
                 variant="contained"
@@ -144,7 +134,7 @@ const BlogPage = () => {
                 }}
                 onClick={handleClose}
               >
-                Cerrar
+                {t("blogPage.close")}
               </Button>
             </>
           )}

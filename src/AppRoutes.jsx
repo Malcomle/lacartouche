@@ -18,6 +18,9 @@ import DashboardContent from "./components/DashboardContent";
 import OrdersContent from "./components/OrdersContent";
 import ProductsContent from "./components/ProductsContent";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import SearchResults from "./pages/SearchResults";
+import InscriptionPage from "./pages/InscriptionPage";
+
 
 const AppRoutes = ({ cart, setCart }) => {
   // Garde vérification d'âge
@@ -48,13 +51,14 @@ const AppRoutes = ({ cart, setCart }) => {
       <Route element={<AgeVerificationGuard />}>
         <Route path="/payment-success" element={<PayementProcess />} />
         <Route path="/payement" element={<PayementProcess />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<HomePage cart={cart} setCart={setCart} />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/atencion-al-cliente" element={<ServiceClientPage />} />
         <Route
           path="/productos/:category"
           element={<ProductsPage cart={cart} setCart={setCart} />}
         />
+          <Route path="/search" element={<SearchResults />} />
         <Route path="/consejos" element={<ConsejosPage />} />
         <Route
           path="/shoppingcart"
@@ -62,6 +66,7 @@ const AppRoutes = ({ cart, setCart }) => {
         />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/connexion" element={<ConnexionPage />} />
+        <Route path="/register" element={<InscriptionPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
 
         <Route element={<ProtectedRoute />}>

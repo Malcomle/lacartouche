@@ -21,14 +21,15 @@ import useProducts from "../hooks/useProducts";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-
+import { useTranslation } from "react-i18next";
 
 const categories = ["Puff", "Kits", "Pods"];
 
 const ProductForm = () => {
+  const { t } = useTranslation();
   const { createProduct, updateProduct, getProductById } = useProducts();
   const navigate = useNavigate();
-  const { id } = useParams(); // si présent, on est en mode édition
+  const { id } = useParams();
   const isEditMode = Boolean(id);
 
   const [tags, setTags] = useState(["XXXX", "XXXX", "XXXX"]);
@@ -57,12 +58,8 @@ const ProductForm = () => {
             description: existingProduct.description || "",
             category: existingProduct.category || "",
             brand: existingProduct.brand || "",
-            stock: existingProduct.stock
-              ? existingProduct.stock.toString()
-              : "",
-            price: existingProduct.price
-              ? existingProduct.price.toString()
-              : "",
+            stock: existingProduct.stock ? existingProduct.stock.toString() : "",
+            price: existingProduct.price ? existingProduct.price.toString() : "",
           });
           setMainImage(existingProduct.image || null);
           if (existingProduct.tags) setTags(existingProduct.tags);
@@ -70,9 +67,8 @@ const ProductForm = () => {
       };
       loadProduct();
     }
-  }, [isEditMode, id]);
+  }, [isEditMode, id, getProductById]);
 
-  // Simulation d'upload galerie
   useEffect(() => {
     const interval = setInterval(() => {
       setGalleryFiles((prev) =>
@@ -104,27 +100,26 @@ const ProductForm = () => {
     }
   };
 
-  // Validation inchangée
   const validateField = (fieldName, value) => {
     let error = "";
     switch (fieldName) {
       case "name":
-        if (!value.trim()) error = "Le nom est requis.";
+        if (!value.trim()) error = t("productForm.errors.nameRequired");
         break;
       case "category":
-        if (!categories.includes(value)) error = "La catégorie est requise.";
+        if (!categories.includes(value)) error = t("productForm.errors.categoryRequired");
         break;
       case "brand":
-        if (!value.trim()) error = "La marque est requise.";
+        if (!value.trim()) error = t("productForm.errors.brandRequired");
         break;
       case "stock":
         if (!/^\d+$/.test(value) || parseInt(value, 10) <= 0) {
-          error = "Le stock doit être un entier positif.";
+          error = t("productForm.errors.stockPositiveInteger");
         }
         break;
       case "price":
         if (!/^\d+(\.\d+)?$/.test(value) || parseFloat(value) <= 0) {
-          error = "Le prix doit être un nombre positif.";
+          error = t("productForm.errors.pricePositiveNumber");
         }
         break;
       default:
@@ -154,7 +149,7 @@ const ProductForm = () => {
 
   const getHelperText = (field) => {
     if (!touched[field]) return "";
-    return errors[field] ? errors[field] : "Valide";
+    return errors[field] ? errors[field] : t("productForm.valid");
   };
 
   const isError = (field) => {
@@ -203,19 +198,19 @@ const ProductForm = () => {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
-        {isEditMode ? "Modifier le produit" : "Detalles del producto"}
+        {isEditMode ? t("productForm.editTitle") : t("productForm.createTitle")}
       </Typography>
 
       <Grid container spacing={4}>
-        {/* Colonne gauche - inchangée, juste valeurs qui se remplissent grâce à state */}
+        {/* Colonne gauche */}
         <Grid item xs={12} md={6}>
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Nombre del producto
+              {t("productForm.name")}
             </Typography>
             <TextField
               fullWidth
-              placeholder="Escriba aquí el nombre"
+              placeholder={t("productForm.namePlaceholder")}
               variant="outlined"
               value={values.name}
               onChange={(e) => handleChange("name", e.target.value)}
@@ -230,7 +225,7 @@ const ProductForm = () => {
 
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Descripción
+              {t("productForm.description")}
             </Typography>
             <ReactQuill
               value={values.description}
@@ -242,7 +237,7 @@ const ProductForm = () => {
 
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Categoría
+              {t("productForm.category")}
             </Typography>
             <FormControl fullWidth>
               <Select
@@ -253,7 +248,7 @@ const ProductForm = () => {
                 error={isError("category")}
               >
                 <MenuItem value="" disabled>
-                  Sélectionnez une catégorie
+                  {t("productForm.selectCategory")}
                 </MenuItem>
                 {categories.map((cat) => (
                   <MenuItem key={cat} value={cat}>
@@ -274,11 +269,11 @@ const ProductForm = () => {
 
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Marca
+              {t("productForm.brand")}
             </Typography>
             <TextField
               fullWidth
-              placeholder="Escriba aquí el nombre de la marca"
+              placeholder={t("productForm.brandPlaceholder")}
               variant="outlined"
               value={values.brand}
               onChange={(e) => handleChange("brand", e.target.value)}
@@ -293,7 +288,7 @@ const ProductForm = () => {
 
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Cantidad en stock
+              {t("productForm.stock")}
             </Typography>
             <TextField
               fullWidth
@@ -312,7 +307,7 @@ const ProductForm = () => {
 
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Precio de venta
+              {t("productForm.price")}
             </Typography>
             <TextField
               fullWidth
@@ -331,7 +326,7 @@ const ProductForm = () => {
 
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1" sx={{ mb: 1 }}>
-              Etiqueta
+              {t("productForm.tags")}
             </Typography>
             <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
               {tags.map((tag, index) => (
@@ -341,7 +336,7 @@ const ProductForm = () => {
           </Box>
         </Grid>
 
-        {/* Colonne de droite - inchangée */}
+        {/* Colonne droite */}
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -370,17 +365,12 @@ const ProductForm = () => {
             )}
           </Box>
           <Button variant="outlined" component="label" sx={{ mb: 3 }}>
-            Sélectionner l'image principale
-            <input
-              hidden
-              accept="image/*"
-              type="file"
-              onChange={handleMainImageChange}
-            />
+            {t("productForm.selectMainImage")}
+            <input hidden accept="image/*" type="file" onChange={handleMainImageChange} />
           </Button>
 
           <Typography variant="subtitle1" sx={{ mb: 1 }}>
-            Galería de productos
+            {t("productForm.productGallery")}
           </Typography>
 
           <Box
@@ -399,16 +389,12 @@ const ProductForm = () => {
             <input {...getInputProps()} />
             {isDragActive ? (
               <Typography variant="body2" sx={{ color: "#333" }}>
-                Suelte su imagen aquí...
+                {t("productForm.dropImageHere")}
               </Typography>
             ) : (
               <>
-                <Typography variant="body2">
-                  Suelte aquí su imagen, o navegue por
-                </Typography>
-                <Typography variant="body2">
-                  Jpeg, png están permitidos
-                </Typography>
+                <Typography variant="body2">{t("productForm.dropOrBrowse")}</Typography>
+                <Typography variant="body2">{t("productForm.allowedFormats")}</Typography>
               </>
             )}
           </Box>
@@ -451,14 +437,10 @@ const ProductForm = () => {
 
       <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2, mt: 4 }}>
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          {isEditMode ? "Modifier" : "AÑADE"}
+          {isEditMode ? t("productForm.editButton") : t("productForm.addButton")}
         </Button>
-        <Button
-          variant="outlined"
-          color="inherit"
-          onClick={() => navigate("/admin/products")}
-        >
-          CANCELAR
+        <Button variant="outlined" color="inherit" onClick={() => navigate("/admin/products")}>
+          {t("productForm.cancelButton")}
         </Button>
       </Box>
     </Container>

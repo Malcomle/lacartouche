@@ -82,5 +82,144 @@
         "bestSellers": "Meilleures Ventes",
         "sampleProduct": "Produit Exemple",
         "sales": "{{count}} vente(s)"
+    },
+    "blogPage": {
+        "title": "Blog",
+        "subtitle": "Découvrez les dernières tendances et conseils sur les cigarettes électroniques pour améliorer votre expérience de vape.",
+        "posts": {
+            "1": {
+                "title": "Vapoter est-il sûr ? Démystifier les mythes et comprendre les risques",
+                "description": "Cet article aborde les mythes les plus courants sur le vapotage et propose des informations basées sur des études...",
+                "fullText": "Le vapotage a fait l'objet de débats et de malentendus. Dans cet article, nous explorons les études récentes sur les risques et les avantages du vapotage par rapport aux cigarettes traditionnelles. Nous analysons les mythes les plus répandus et offrons des informations objectives pour vous aider à prendre des décisions éclairées."
+            },
+            "2": {
+                "title": "Les meilleures saveurs d'e-liquides à essayer cette année",
+                "description": "Un aperçu des saveurs d'e-liquides les plus populaires et tendance, idéal pour ceux qui veulent découvrir de nouveaux goûts...",
+                "fullText": "Cette année, les saveurs fruitées et pâtissières sont en tête des tendances des e-liquides. Nous présentons les meilleures marques et saveurs, telles que la pastèque, la mangue, la fraise, ainsi que des combinaisons innovantes comme le gâteau au citron et la vanille. Découvrez celles les plus recommandées par les experts et les utilisateurs."
+            }
+        },
+        "readMore": "Lire plus",
+        "close": "Fermer"
+    },
+    "consejosPage": {
+        "title": "Conseils",
+        "subtitle": "Trouvez les meilleurs conseils et guides pour améliorer votre expérience de vape et entretenir vos cigarettes électroniques.",
+        "posts": {
+            "1": {
+                "title": "Guide pour Débutants : Comment Choisir sa Première Cigarette Électronique",
+                "description": "Dans cet article, nous expliquons les différents types de cigarettes électroniques, leurs caractéristiques, et comment choisir le modèle adapté à vos besoins...",
+                "fullText": "Ici, vous trouverez un guide détaillé sur les meilleurs kits pour débutants, y compris les avantages et inconvénients de chacun, des recommandations de marques et des conseils pour bien débuter votre expérience de vapotage."
+            },
+            "2": {
+                "title": "Comment Entretenir et Nettoyer Correctement Votre Cigarette Électronique",
+                "description": "Cet article offre une méthode étape par étape pour l'entretien et le nettoyage de votre appareil, assurant sa durabilité et ses performances optimales.",
+                "fullText": "Un entretien adéquat inclut le nettoyage régulier des embouts, le changement des résistances et la vérification des batteries pour éviter les problèmes à long terme. Nous vous montrons comment procéder simplement et efficacement."
+            }
+        },
+        "readMore": "Lire plus",
+        "close": "Fermer"
+    },
+    "customerSupportPage": {
+        "title": "Service Client - La Cartouche",
+        "subtitle": "Chez La Cartouche, nous sommes là pour vous aider à répondre à toutes vos questions concernant les produits, les commandes ou les livraisons. N'hésitez pas à nous contacter ou à nous rendre visite.",
+        "addressTitle": "Adresse",
+        "address": "9 Rue Saint-Étienne, 49100 Angers, France",
+        "contactTitle": "Contact",
+        "phone": "Téléphone : 08 50 50 29 32 (Service payant)",
+        "hoursTitle": "Horaires d'Ouverture",
+        "hours": {
+            "mondayThursday": "Lundi au Jeudi : 7:30 - 20:00",
+            "friday": "Vendredi : 7:30 - 21:00",
+            "saturday": "Samedi : 8:00 - 22:00",
+            "sunday": "Dimanche : 11:00 - 20:00"
+        },
+        "locationTitle": "Localisation",
+        "locationIframeTitle": "Localisation de La Cartouche",
+        "viewFullMap": "Voir sur la carte complète"
+    },
+    "shoppingCartPage": {
+        "emptyCart": "Votre panier est vide",
+        "productList": "Liste de Produits",
+        "colorLabel": "Couleur",
+        "colorNotAvailable": "N/A",
+        "orderSummary": "Récapitulatif de la Commande",
+        "subtotal": "Sous-total",
+        "discount": "Réduction",
+        "total": "Total",
+        "addPromoCode": "Ajouter un code promotionnel",
+        "proceedToCheckout": "Passer à la caisse →"
+    },
+    "paymentPage": {
+        "title": "Paiement",
+        "successTitle": "Paiement Confirmé",
+        "successMessage": "Votre paiement a été effectué avec succès. Vous serez redirigé vers la page principale dans 5 secondes.",
+        "successConfirm": "Ok",
+        "errorMessage": "Veuillez vérifier vos informations de paiement.",
+        "errorReturn": "Retour à la page de paiement",
+        "cardNumber": "Numéro de Carte Bancaire",
+        "expirationDate": "Date d'Expiration (MM/AA)",
+        "cvv": "CVV",
+        "validatePayment": "Valider le Paiement",
+        "orderName": "Commande de produits"
+    },
+    "productForm": {
+        "editTitle": "Modifier le produit",
+        "createTitle": "Détails du produit",
+        "name": "Nom du produit",
+        "namePlaceholder": "Tapez le nom ici",
+        "description": "Description",
+        "category": "Catégorie",
+        "selectCategory": "Sélectionnez une catégorie",
+        "brand": "Marque",
+        "brandPlaceholder": "Tapez ici le nom de la marque",
+        "stock": "Quantité en stock",
+        "price": "Prix de vente",
+        "tags": "Étiquette",
+        "selectMainImage": "Sélectionner l'image principale",
+        "productGallery": "Galerie de produits",
+        "dropOrBrowse": "Déposez ici votre image, ou parcourez",
+        "allowedFormats": "Jpeg, png sont autorisés",
+        "dropImageHere": "Déposez votre image ici...",
+        "valid": "Valide",
+        "errors": {
+            "nameRequired": "Le nom est requis.",
+            "categoryRequired": "La catégorie est requise.",
+            "brandRequired": "La marque est requise.",
+            "stockPositiveInteger": "Le stock doit être un entier positif.",
+            "pricePositiveNumber": "Le prix doit être un nombre positif."
+        },
+        "editButton": "Modifier",
+        "addButton": "Ajouter",
+        "cancelButton": "Annuler"
+    },
+    "inscriptionPage": {
+        "title": "Inscription",
+        "usernameLabel": "Nom d'utilisateur",
+        "usernamePlaceholder": "USERNAME",
+        "passwordLabel": "Mot de passe",
+        "passwordPlaceholder": "PASSWORD",
+        "confirmPasswordLabel": "Confirmer le mot de passe",
+        "confirmPasswordPlaceholder": "CONFIRM PASSWORD",
+        "signUpButton": "S'inscrire",
+        "alreadyHaveAccount": "Vous avez déjà un compte ?",
+        "loginLink": "Connectez-vous",
+        "errorTitle": "Erreur d'inscription",
+        "signupError": "Erreur lors de l'inscription. Veuillez vérifier vos informations.",
+        "passwordMismatch": "Les mots de passe ne correspondent pas.",
+        "okButton": "OK"
+    },
+    "connexionPage": {
+        "title": "Connexion",
+        "usernameLabel": "Nom d'utilisateur",
+        "usernamePlaceholder": "USERNAME",
+        "passwordLabel": "Mot de passe",
+        "passwordPlaceholder": "PASSWORD",
+        "loginButton": "LOGIN",
+        "noAccount": "Vous n'avez pas de compte ?",
+        "signUpLink": "Inscrivez-vous",
+        "forgotPassword": "Mot de passe oublié ?",
+        "errorTitle": "Erreur de connexion",
+        "loginError": "Adresse e-mail ou mot de passe incorrecte.",
+        "okButton": "OK"
     }
 }

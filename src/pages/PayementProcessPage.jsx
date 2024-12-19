@@ -12,8 +12,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import useOrders from "../hooks/useOrders";
+import { useTranslation } from "react-i18next";
 
 const PaymentProcessPage = () => {
+  const { t } = useTranslation();
   const [cardNumber, setCardNumber] = useState("");
   const [expiration, setExpiration] = useState("");
   const [cvv, setCvv] = useState("");
@@ -23,24 +25,21 @@ const PaymentProcessPage = () => {
   const { createOrder } = useOrders();
   const navigate = useNavigate();
 
-  const successGif = "/images/success.gif"; // Chemin correct vers success.gif dans public
+  const successGif = "/images/success.gif";
   const errorGif = "/images/error.gif";
 
-  // Vérifier si la carte est valide (Regex simple pour le format d'une carte VISA ou Mastercard)
   const isCardValid = (number) => {
-    const cardRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/; // VISA / MASTERCARD
-    return cardRegex.test(number.replace(/\s/g, "")); // Enlever les espaces
+    const cardRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/;
+    return cardRegex.test(number.replace(/\s/g, ""));
   };
 
-  // Vérifier si la date d'expiration est valide (format MM/YY)
   const isExpirationValid = (date) => {
-    const expirationRegex = /^(0[1-9]|1[0-2])\/[0-9]{2}$/; // MM/YY
+    const expirationRegex = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
     return expirationRegex.test(date);
   };
 
-  // Vérifier si le CVV est valide (3 chiffres)
   const isCvvValid = (cvv) => {
-    const cvvRegex = /^[0-9]{3}$/; // 3 chiffres
+    const cvvRegex = /^[0-9]{3}$/;
     return cvvRegex.test(cvv);
   };
 
@@ -53,14 +52,14 @@ const PaymentProcessPage = () => {
       setShowSuccess(true);
       setOpenPopup(true);
       createOrder({
-        productName: "Commande de produits",
+        productName: t("paymentPage.orderName"),
         orderId: "#" + Math.floor(Math.random() * 1000),
         date: new Date().toLocaleDateString(),
         customerName: "Julien",
         status: "En attente",
-        amount: "XXX.XX€",
-      })
-      setTimeout(() => navigate("/home"), 5000); // Retourne à la page /home après 5 secondes
+        amount: "19.99",
+      });
+      setTimeout(() => navigate("/home"), 5000);
     } else {
       setShowError(true);
     }
@@ -86,23 +85,22 @@ const PaymentProcessPage = () => {
         variant="h4"
         sx={{ fontWeight: "bold", marginBottom: 3, color: "#4E342E" }}
       >
-        Paiement
+        {t("paymentPage.title")}
       </Typography>
 
       {showSuccess ? (
         <>
           <img src={successGif} alt="Validation" width={200} />
           <Dialog open={openPopup} onClose={handleClosePopup}>
-            <DialogTitle>Paiement Confirmé</DialogTitle>
+            <DialogTitle>{t("paymentPage.successTitle")}</DialogTitle>
             <DialogContent>
               <Typography>
-                Votre paiement a été effectué avec succès. Vous serez redirigé vers
-                la page principale dans 5 secondes.
+                {t("paymentPage.successMessage")}
               </Typography>
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClosePopup} color="primary">
-                Ok
+                {t("paymentPage.successConfirm")}
               </Button>
             </DialogActions>
           </Dialog>
@@ -111,7 +109,7 @@ const PaymentProcessPage = () => {
         <>
           <img src={errorGif} alt="Erreur" width={200} />
           <Typography color="error" sx={{ marginTop: 2 }}>
-            Veuillez vérifier vos informations de paiement.
+            {t("paymentPage.errorMessage")}
           </Typography>
           <Typography
             onClick={() => setShowError(false)}
@@ -123,7 +121,7 @@ const PaymentProcessPage = () => {
               textDecoration: "underline",
             }}
           >
-            Retour à la page de paiement
+            {t("paymentPage.errorReturn")}
           </Typography>
         </>
       ) : (
@@ -139,7 +137,7 @@ const PaymentProcessPage = () => {
           }}
         >
           <TextField
-            placeholder="Numéro de Carte Bancaire"
+            placeholder={t("paymentPage.cardNumber")}
             variant="outlined"
             fullWidth
             value={cardNumber}
@@ -147,7 +145,7 @@ const PaymentProcessPage = () => {
             required
           />
           <TextField
-            placeholder="Date d'Expiration (MM/AA)"
+            placeholder={t("paymentPage.expirationDate")}
             variant="outlined"
             fullWidth
             value={expiration}
@@ -155,7 +153,7 @@ const PaymentProcessPage = () => {
             required
           />
           <TextField
-            placeholder="CVV"
+            placeholder={t("paymentPage.cvv")}
             variant="outlined"
             fullWidth
             value={cvv}
@@ -174,7 +172,7 @@ const PaymentProcessPage = () => {
               "&:hover": { backgroundColor: "#4E342E" },
             }}
           >
-            Valider le Paiement
+            {t("paymentPage.validatePayment")}
           </Button>
         </Box>
       )}
